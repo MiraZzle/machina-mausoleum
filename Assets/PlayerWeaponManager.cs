@@ -12,24 +12,25 @@ public class PlayerWeaponManager : MonoBehaviour
     //[SerializeField] private int maxGunSlots = 2;
     [SerializeField] private PlayerMovement player;
 
-
     [SerializeField] private GameObject weaponManager;
     [SerializeField] private GameObject currentGun;
 
-    [SerializeField] private GameObject[] gunList;
+    [SerializeField] private List<GameObject> gunList;
+
+    [SerializeField] private int maxGunCount = 3;
 
 
 
     void Start()
     {
-        getGuns();
+        UpdateGuns();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            switchWeapon(1);
+            SwitchWeapon(1);
         }
 
         if (player.rolling)
@@ -43,8 +44,10 @@ public class PlayerWeaponManager : MonoBehaviour
 
     }
 
-    void switchWeapon(int indexChange)
+    void SwitchWeapon(int indexChange)
     {
+        UpdateGuns();
+
         gunList[currentGunIndex].SetActive(false);
 
         currentGunIndex += indexChange;
@@ -56,19 +59,50 @@ public class PlayerWeaponManager : MonoBehaviour
         currentGun = gunList[currentGunIndex];
     }
 
-    void getGuns()
+    private void UpdateGuns()
     {
-        numberOfGuns = weaponManager.transform.childCount;
-        gunList = new GameObject[numberOfGuns];
+        numberOfGuns = getNumberOfGuns();
+        gunList = new List<GameObject>();
 
         for (int i = 0; i < numberOfGuns; i++)
         {
-            gunList[i] = weaponManager.transform.GetChild(i).gameObject;
+            gunList.Add(weaponManager.transform.GetChild(i).gameObject);
             gunList[i].SetActive(false);
         }
 
         gunList[currentGunIndex].SetActive(true);
         currentGun = gunList[currentGunIndex];
+    }
 
+    private int getNumberOfGuns()
+    {
+        return weaponManager.transform.childCount;
+        
+    }
+
+    public void AddGun(GameObject newGun)
+    {
+        GameObject addedGun = Instantiate(newGun, this.transform.position, this.transform.rotation);
+        addedGun.transform.parent = weaponManager.transform;
+
+
+        if (numberOfGuns < maxGunCount)
+        {
+            UpdateGuns();
+            SwitchWeapon(numberOfGuns -  currentGunIndex - 1);
+        }
+
+        else
+        {
+            Destroy(currentGun); 
+            currentGun = addedGun;
+
+            gunList.RemoveAt(currentGunIndex);
+
+            addedGun.transform.SetSiblingIndex(currentGunIndex);
+            SwitchWeapon(0);
+
+            UpdateGuns();
+        }
     }
 }

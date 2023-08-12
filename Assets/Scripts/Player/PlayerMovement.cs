@@ -119,6 +119,5 @@ public class PlayerMovement : MonoBehaviour
             sprite.flipX = true;
         }
     }
-
 }
 
