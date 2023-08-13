@@ -98,13 +98,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667c62333c191744ba1bf277e9385b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gun1: {fileID: 486730837115297746, guid: b8e4ee1b4e3f4a449954209c5bcaa455, type: 3}
-  gun2: {fileID: 1948502619892212996, guid: 60c074b8b04842e4aa3c518dbbde5b50, type: 3}
-  gun3: {fileID: 1948502619892212996, guid: 60c074b8b04842e4aa3c518dbbde5b50, type: 3}
-  gun4: {fileID: 598460845626643520, guid: 256017e9e1ade004b80f0d4c8cf50bc0, type: 3}
-  gun5: {fileID: 4693286824156998121, guid: dbfbe46c569eefe42a77451fece3ae37, type: 3}
-  gun6: {fileID: 6603699336634963688, guid: 79f209d3db3073b44a28ab33e9ead45f, type: 3}
-  collided: 0
+  gun1: {fileID: 7273209203792596813, guid: 469b49025f72d1842ac4eed1362e5085, type: 3}
+  gun2: {fileID: 5880521448009942319, guid: 0185fea6b5fd74143ac30e1938e04f12, type: 3}
+  gun3: {fileID: 6452737787199462770, guid: c2dcdb59ef5f8cd4ca0fc386625ce10b, type: 3}
+  gun4: {fileID: 301002570867677192, guid: 30ea3b8becffe5241b6d336f3a07c411, type: 3}
+  gun5: {fileID: 3191293061927606596, guid: 7b6b72aeb219a8c4e961c3e16666b373, type: 3}
+  gun6: {fileID: 373240785242598086, guid: 59c8dd0f8c9a6d84798536a28e566f31, type: 3}
+  gunList:
+  - {fileID: 7273209203792596813, guid: 469b49025f72d1842ac4eed1362e5085, type: 3}
+  - {fileID: 5880521448009942319, guid: 0185fea6b5fd74143ac30e1938e04f12, type: 3}
+  - {fileID: 6452737787199462770, guid: c2dcdb59ef5f8cd4ca0fc386625ce10b, type: 3}
+  - {fileID: 301002570867677192, guid: 30ea3b8becffe5241b6d336f3a07c411, type: 3}
+  - {fileID: 373240785242598086, guid: 59c8dd0f8c9a6d84798536a28e566f31, type: 3}
+  - {fileID: 3191293061927606596, guid: 7b6b72aeb219a8c4e961c3e16666b373, type: 3}
+  playerColliding: 0
 --- !u!61 &1153600778755618701
 BoxCollider2D:
   m_ObjectHideFlags: 0

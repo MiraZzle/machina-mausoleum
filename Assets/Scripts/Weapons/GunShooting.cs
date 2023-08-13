@@ -8,6 +8,7 @@ public class GunShooting : MonoBehaviour
 {
     [SerializeField] private Transform firePos;
     [SerializeField] private GameObject projectilePrefab;
+
     [SerializeField] private Animator gunAnimator;
 
     [SerializeField] private bool automatic;
@@ -22,7 +23,6 @@ public class GunShooting : MonoBehaviour
     [SerializeField] private float accuracyDeg;
 
 
-
     private float shootReadyTime = 0f;
 
     void Start()
@@ -30,8 +30,12 @@ public class GunShooting : MonoBehaviour
         
     }
 
-    // Update is called once per frame
     void Update()
+    {
+        CheckIfShooting();
+    }
+
+    private void CheckIfShooting()
     {
         if (Input.GetMouseButtonDown(0) && !automatic)
         {
@@ -67,5 +71,4 @@ public class GunShooting : MonoBehaviour
             Shoot();
         }
     }
-
 }

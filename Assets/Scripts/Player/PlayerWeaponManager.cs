@@ -9,7 +9,6 @@ public class PlayerWeaponManager : MonoBehaviour
     private int currentGunIndex = 0;
     private int numberOfGuns = 1;
 
-    //[SerializeField] private int maxGunSlots = 2;
     [SerializeField] private PlayerMovement player;
 
     [SerializeField] private GameObject weaponManager;
@@ -28,11 +27,22 @@ public class PlayerWeaponManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+
+        if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
             SwitchWeapon(1);
         }
 
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            SwitchWeapon(-1);
+        }
+
+        ManageRolling();
+    }
+
+    void ManageRolling()
+    {
         if (player.rolling)
         {
             currentGun.SetActive(false);
@@ -41,7 +51,6 @@ public class PlayerWeaponManager : MonoBehaviour
         {
             currentGun.SetActive(true);
         }
-
     }
 
     void SwitchWeapon(int indexChange)
@@ -50,9 +59,19 @@ public class PlayerWeaponManager : MonoBehaviour
 
         gunList[currentGunIndex].SetActive(false);
 
-        currentGunIndex += indexChange;
+        if (currentGunIndex + indexChange < 0)
+        {
+            currentGunIndex = numberOfGuns - 1;
+        }
 
-        currentGunIndex %= numberOfGuns;
+        else
+        {
+
+            currentGunIndex += indexChange;
+
+            currentGunIndex %= numberOfGuns;
+        }
+
 
         gunList[currentGunIndex].SetActive(true);
 
@@ -94,6 +113,8 @@ public class PlayerWeaponManager : MonoBehaviour
 
         else
         {
+            currentGun.GetComponent<GunPickupSpawner>().SpawnPickup();
+
             Destroy(currentGun); 
             currentGun = addedGun;
 
