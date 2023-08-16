@@ -5,13 +5,15 @@ using UnityEngine.U2D;
 
 public class Gun : MonoBehaviour
 {
-
     [SerializeField] private SpriteRenderer gunSprite;
+
+    private float shootPosVert;
+
     private Vector3 mousePosition;
 
     void Start()
     {
-        
+
     }
     void Update()
     {
@@ -40,11 +42,11 @@ public class Gun : MonoBehaviour
 
         if (mousePosition.x > transform.position.x)
         {
-            gunSprite.flipY = false;
+            gunSprite.transform.localScale = new Vector3(1,1,1);
         }
         else
         {
-            gunSprite.flipY = true;
+            gunSprite.transform.localScale = new Vector3(1,-1,1);
         }
     }
 

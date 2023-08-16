@@ -1,15 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class GunShooting : MonoBehaviour
 {
+    [SerializeField] private int accuracyDeg;
+    [SerializeField] private int shotsPerFire = 1;
+
     [SerializeField] private Transform firePos;
     [SerializeField] private GameObject projectilePrefab;
-
-    [SerializeField] private Animator gunAnimator;
 
     [SerializeField] private bool automatic;
     [SerializeField] private bool canShoot;
@@ -19,9 +21,6 @@ public class GunShooting : MonoBehaviour
     [SerializeField] private float projectileSpeed = 10f;
     [SerializeField] private float damage;
     [SerializeField] private float fireRate;
-
-    [SerializeField] private float accuracyDeg;
-
 
     private float shootReadyTime = 0f;
 
@@ -39,7 +38,10 @@ public class GunShooting : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !automatic)
         {
-            Shoot();
+            for (int i = 0; i < shotsPerFire; i++)
+            {
+                Shoot();
+            }
         }
 
         if (Input.GetMouseButton(0) && automatic)
@@ -50,11 +52,13 @@ public class GunShooting : MonoBehaviour
 
     private void Shoot()
     {
+        int bulletDeviation = UnityEngine.Random.Range(-accuracyDeg, accuracyDeg);
+        Vector3 spread = new Vector3(0, 0, bulletDeviation);
 
-        GameObject projectile = Instantiate(projectilePrefab, firePos.position, firePos.rotation);
+        GameObject projectile = Instantiate(projectilePrefab, firePos.position, Quaternion.Euler(firePos.rotation.eulerAngles + spread));
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
 
-        rb.AddForce(firePos.right * projectileSpeed, ForceMode2D.Impulse);
+        rb.AddForce(projectile.transform.right * projectileSpeed, ForceMode2D.Impulse);
 
         if (firePos.position.x < transform.position.x)
         {
@@ -68,7 +72,10 @@ public class GunShooting : MonoBehaviour
         if (Time.time > shootReadyTime)
         {
             shootReadyTime = Time.time + 1/fireRate;
-            Shoot();
+            for (int i = 0; i < shotsPerFire; i++)
+            {
+                Shoot();
+            }
         }
     }
 }

@@ -100,6 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98426c764bc047741998267e1a1d08b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootPos: {fileID: 7689034452909022751}
   gunSprite: {fileID: 7100214269252366512}
 --- !u!114 &3064494189846347435
 MonoBehaviour:
@@ -113,9 +114,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01597a6b5191b7c45ba32f6a1dcb82ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  accuracyDeg: 25
+  shotsPerFire: 1
   firePos: {fileID: 7689034452909022751}
   projectilePrefab: {fileID: 6876085147549116530, guid: 9a19492912fe62741bc78022d81f9317, type: 3}
-  gunAnimator: {fileID: 8364640900056747259}
   automatic: 0
   canShoot: 0
   reloadTime: 0
@@ -123,7 +125,6 @@ MonoBehaviour:
   projectileSpeed: 8
   damage: 0
   fireRate: 0
-  accuracyDeg: 0
 --- !u!114 &2217077477884722986
 MonoBehaviour:
   m_ObjectHideFlags: 0
