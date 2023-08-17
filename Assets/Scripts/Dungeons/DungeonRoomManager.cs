@@ -21,33 +21,13 @@ public class DungeonRoomManager : MonoBehaviour
 
     void Start()
     {
-        doors = GameObject.FindGameObjectsWithTag("door");
-    }
-
-    private void CheckForSpawn()
-    {
-        ActivateParts(false, false);
-
-        if (isSpawnRoom)
-        {
-            ActivateParts(true, false);
-        }
+        //doors = GameObject.FindGameObjectsWithTag("door");
     }
 
     void Update()
     {
         
     }
-
-    private void ActivateParts(bool entStat, bool blockStat)
-    {
-        for (int i = 0; i < availableSides; i++)
-        {
-            entrances[i].SetActive(entStat);
-            blocks[i].SetActive(blockStat);
-        }
-    }
-
     private void HandleDoors()
     {
 
@@ -59,8 +39,8 @@ public class DungeonRoomManager : MonoBehaviour
         {
             activeSides[i] = sidesToActivate[i];
 
-            entrances[i].SetActive(entrances[i]);
-            entrances[i].SetActive(!blocks[i]);
+            entrances[i].SetActive(sidesToActivate[i]);
+            blocks[i].SetActive(!sidesToActivate[i]);
         }
     }
 }
