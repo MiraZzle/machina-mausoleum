@@ -26,15 +26,14 @@ public class DungeonGenerator : MonoBehaviour
 
     private class RoomReference
     {
-        private Vector2[] roomDirs = new Vector2[4] { Vector2.up, Vector2.right, Vector2.down, Vector2.left };
+        private const int sideCount = 4;
+        private Vector2[] roomDirs = new Vector2[sideCount] { Vector2.up, Vector2.right, Vector2.down, Vector2.left };
 
 
         public Vector2 parentDir;
         public Vector2 posInArray;
 
-        public bool isStarting = false;
-
-        public bool[] activeSides = new bool[4];
+        public bool[] activeSides = new bool[sideCount];
 
         public Dictionary<Vector2, bool> sideMarker = new Dictionary<Vector2, bool>() {
             { Vector2.up, false },
@@ -45,38 +44,44 @@ public class DungeonGenerator : MonoBehaviour
 
         public bool generatedChildren = false;
         public bool isGenerated = false;
+        public bool isStarting = false;
 
-        private int maxNewRooms = 2;
 
-        public Vector2[] getNewRooms()
+        private int minNeighbouringRooms = 2;
+
+        public Vector2[] getNeihbourRooms()
         {
 
             if (isStarting)
             {
-                return roomDirs;
+
+                return generateNeighbours(minNeighbouringRooms, 4);
             }
 
-            else
+            return generateNeighbours(minNeighbouringRooms, 3);
+
+        }
+
+        private Vector2[] generateNeighbours(int maxNeigbours, int minNeighbours)
+        {
+            int neighbourCount = Random.Range(minNeighbours, maxNeigbours);
+            Vector2[] randomRooms = new Vector2[neighbourCount];
+
+            for (int i = 0; i < neighbourCount; i++)
             {
-                Vector2[] randomRooms = new Vector2[2];
+                int randInt = Random.Range(0, roomDirs.Length);
+                Vector2 addedDir = roomDirs[randInt];
 
-                for (int i = 0; i < maxNewRooms; i++)
+                while (randomRooms.Contains(addedDir))
                 {
-                    int randInt = Random.Range(0, roomDirs.Length);
-
-                    Vector2 addedDir = roomDirs[randInt];
-
-                    while (randomRooms.Contains(addedDir))
-                    {
-                        randInt = Random.Range(0, roomDirs.Length);
-                        addedDir = roomDirs[randInt];
-                    }
-
-                    randomRooms[i] = addedDir;
-
+                    randInt = Random.Range(0, roomDirs.Length);
+                    addedDir = roomDirs[randInt];
                 }
-                return randomRooms;
+
+                randomRooms[i] = addedDir;
+
             }
+            return randomRooms;
         }
     }
 
@@ -87,7 +92,6 @@ public class DungeonGenerator : MonoBehaviour
 
         GenerateMap();
         testRooms();
-
     }
 
     void Update()
@@ -124,7 +128,7 @@ public class DungeonGenerator : MonoBehaviour
 
             Vector2 roomPos = currentRoom.posInArray;
 
-            newDirections = currentRoom.getNewRooms();
+            newDirections = currentRoom.getNeihbourRooms();
 
             
 

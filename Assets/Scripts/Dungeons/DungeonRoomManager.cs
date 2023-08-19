@@ -21,16 +21,38 @@ public class DungeonRoomManager : MonoBehaviour
 
     void Start()
     {
-        //doors = GameObject.FindGameObjectsWithTag("door");
+        doors = GameObject.FindGameObjectsWithTag("Door");
+
+        Debug.Log(doors.Length);
     }
 
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Backspace) && roomEntered)
+        {
+            roomCleaned = true;
+
+            foreach (var door in doors)
+            {
+                door.GetComponent<DoorManager>().roomCleared = true;
+            }
+        }
     }
     private void HandleDoors()
     {
 
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player") && !roomEntered)
+        {
+            foreach (var door in doors)
+            {
+                roomEntered = true;
+                door.GetComponent<DoorManager>().roomEntered = true;
+            }
+        }
     }
 
     public void SetActiveEntrances(bool[] sidesToActivate)
