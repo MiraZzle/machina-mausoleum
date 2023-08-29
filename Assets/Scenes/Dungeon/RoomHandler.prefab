@@ -47,5 +47,5 @@ MonoBehaviour:
   roomPrefab: {fileID: 5258110070825770245, guid: c51ce72649c1b724c935b675d3b1c499, type: 3}
   roomMapSize: 20
   mapBoundaries: 15
-  minRooms: 6
-  maxRooms: 10
+  minRooms: 7
+  maxRooms: 11

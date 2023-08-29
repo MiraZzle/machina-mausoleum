@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4095361378602265253}
   - component: {fileID: 5995093684173200374}
   - component: {fileID: 7764234649411859715}
-  m_Layer: 0
+  - component: {fileID: 5852196302275947563}
+  m_Layer: 6
   m_Name: RifleProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2019961851
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2ee277b7eb5c73547b75e4efdd7e6521, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -158,3 +159,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.44953144, y: 0.20426589}
   m_EdgeRadius: 0
+--- !u!114 &5852196302275947563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3841104558420554260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dcda554a3d2fa24091809b1f9eebd6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionParticles: {fileID: 0}

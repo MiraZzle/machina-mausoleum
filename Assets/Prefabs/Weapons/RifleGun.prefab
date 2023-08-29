@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5506600552560584983}
   - component: {fileID: 3135668076999380069}
   - component: {fileID: 8273983586201444584}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: RifleGun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1370044909
+  m_SortingLayerID: -2019961851
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
@@ -113,10 +113,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01597a6b5191b7c45ba32f6a1dcb82ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accuracy: 0
+  accuracyDeg: 3
+  shotsPerFire: 1
   firePos: {fileID: 7761835909162429649}
   projectilePrefab: {fileID: 3841104558420554260, guid: 29840bc9c7c0cda48ab89e972de0943b, type: 3}
-  gunAnimator: {fileID: 0}
   automatic: 0
   canShoot: 0
   reloadTime: 0
@@ -124,7 +124,6 @@ MonoBehaviour:
   projectileSpeed: 20
   damage: 0
   fireRate: 0
-  accuracyDeg: 3
 --- !u!114 &8273983586201444584
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,7 +146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7761835909162429649}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FirePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -179,7 +178,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6918760655455141683}
   - component: {fileID: 7172655275339203198}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GunSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,8 +239,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2019961851
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f269a7c4077988b418900bc5b9f79a3e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -75,7 +75,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1370044909
-  m_SortingLayer: 1
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -113,9 +113,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01597a6b5191b7c45ba32f6a1dcb82ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  accuracyDeg: 0
+  shotsPerFire: 1
   firePos: {fileID: 0}
   projectilePrefab: {fileID: 0}
-  gunAnimator: {fileID: 0}
   automatic: 0
   canShoot: 0
   reloadTime: 0
@@ -123,7 +124,6 @@ MonoBehaviour:
   projectileSpeed: 10
   damage: 0
   fireRate: 0
-  accuracyDeg: 0
 --- !u!114 &2247021808415601589
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,8 +239,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2019961851
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

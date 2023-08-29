@@ -45,6 +45,7 @@ public class DungeonGenerator : MonoBehaviour
         public bool generatedChildren = false;
         public bool isGenerated = false;
         public bool isStarting = false;
+        public bool isExit = false;
 
 
         private int minNeighbouringRooms = 2;
@@ -162,6 +163,8 @@ public class DungeonGenerator : MonoBehaviour
 
             currentRoom.isGenerated = true;
         }
+
+        roomHolder.Last().isExit = true;
     }
 
     private void testRooms()
@@ -184,6 +187,16 @@ public class DungeonGenerator : MonoBehaviour
             r.transform.parent = gameObject.transform;
 
             r.GetComponent<DungeonRoomManager>().SetActiveEntrances(activeSides);
+
+            if (item.isExit)
+            {
+                r.GetComponent<DungeonRoomManager>().isExitRoom = true;
+            }
+
+            if (item.isStarting)
+            {
+                r.GetComponent<DungeonRoomManager>().isSpawnRoom = true;
+            }
         }
     }
 

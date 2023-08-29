@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
+    [SerializeField] private GameObject explosionParticles;
     void Update()
     {
         
@@ -20,14 +14,8 @@ public class Projectile : MonoBehaviour
     {
         if (!collision.CompareTag("Player"))
         {
-        
+            //GameObject explosionInst = Instantiate(explosionParticles, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Destroy(gameObject);
-
     }
 }

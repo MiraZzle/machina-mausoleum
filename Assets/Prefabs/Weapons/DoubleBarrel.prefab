@@ -13,6 +13,10 @@ PrefabInstance:
       value: DoubleBarrel
       objectReference: {fileID: 0}
     - target: {fileID: 565618106051587838, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 565618106051587838, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -20,6 +24,10 @@ PrefabInstance:
       propertyPath: weaponPickup
       value: 
       objectReference: {fileID: 906408256912160064, guid: ded36b385f6266a41b949e5592dd9ba8, type: 3}
+    - target: {fileID: 2692445708005331124, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 2913893921490958995, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
       propertyPath: firePos
       value: 
@@ -40,6 +48,18 @@ PrefabInstance:
       propertyPath: projectilePrefab
       value: 
       objectReference: {fileID: 6876085147549116530, guid: 9a19492912fe62741bc78022d81f9317, type: 3}
+    - target: {fileID: 3138489117251006632, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3138489117251006632, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2019961851
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325931567171064325, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 5491441016270357833, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -96,6 +116,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: e5417fb1084f3854eb11bb0aac73702f, type: 3}
+    - target: {fileID: 6953128386287580296, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6953128386287580296, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -2019961851
+      objectReference: {fileID: 0}
     - target: {fileID: 6953128386287580296, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1

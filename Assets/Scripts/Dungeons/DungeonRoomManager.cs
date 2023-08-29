@@ -7,10 +7,13 @@ public class DungeonRoomManager : MonoBehaviour
 {
     private int availableSides = 4;
 
-    [SerializeField] private bool isSpawnRoom = false;
+    public bool isExitRoom = false;
+    public bool isSpawnRoom = false;
+
     public bool roomEntered = false;
     public bool roomCleaned = false;
 
+    [SerializeField] GameObject objectSpawner;
     [SerializeField] GameObject[] doors;
 
     [SerializeField] private GameObject[] entrances = new GameObject[4];
@@ -21,13 +24,20 @@ public class DungeonRoomManager : MonoBehaviour
 
     void Start()
     {
-        doors = GameObject.FindGameObjectsWithTag("Door");
+        HandleDoors();
+        SignalSpawner();
 
-        Debug.Log(doors.Length);
     }
 
     void Update()
     {
+        HandleDoors();
+    }
+    private void HandleDoors()
+    {
+
+        Debug.Log(doors.Length);
+
         if (Input.GetKeyDown(KeyCode.Backspace) && roomEntered)
         {
             roomCleaned = true;
@@ -37,20 +47,20 @@ public class DungeonRoomManager : MonoBehaviour
                 door.GetComponent<DoorManager>().roomCleared = true;
             }
         }
-    }
-    private void HandleDoors()
-    {
 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !roomEntered)
+        if (!isSpawnRoom && !isExitRoom)
         {
-            foreach (var door in doors)
+            if (collision.CompareTag("Player") && !roomEntered)
             {
-                roomEntered = true;
-                door.GetComponent<DoorManager>().roomEntered = true;
+                foreach (var door in doors)
+                {
+                    roomEntered = true;
+                    door.GetComponent<DoorManager>().roomEntered = true;
+                }
             }
         }
     }
@@ -63,6 +73,21 @@ public class DungeonRoomManager : MonoBehaviour
 
             entrances[i].SetActive(sidesToActivate[i]);
             blocks[i].SetActive(!sidesToActivate[i]);
+        }
+    }
+
+    private void SignalSpawner()
+    {
+        ObjectSpawner spawnerRef = objectSpawner.GetComponent<ObjectSpawner>();
+
+        if (!isExitRoom && !isSpawnRoom)
+        {
+            spawnerRef.SpawnObjects();
+        }
+
+        else
+        {
+            spawnerRef.SpawnElevator(isExitRoom, isSpawnRoom);
         }
     }
 }

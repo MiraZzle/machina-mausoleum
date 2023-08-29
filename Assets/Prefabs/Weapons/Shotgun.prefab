@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5577713347929398233}
   - component: {fileID: 3064494189846347435}
   - component: {fileID: 2217077477884722986}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1370044909
+  m_SortingLayerID: -2019961851
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
@@ -100,7 +100,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98426c764bc047741998267e1a1d08b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootPos: {fileID: 7689034452909022751}
   gunSprite: {fileID: 7100214269252366512}
 --- !u!114 &3064494189846347435
 MonoBehaviour:
@@ -114,7 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01597a6b5191b7c45ba32f6a1dcb82ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accuracyDeg: 25
+  accuracyDeg: 5
   shotsPerFire: 1
   firePos: {fileID: 7689034452909022751}
   projectilePrefab: {fileID: 6876085147549116530, guid: 9a19492912fe62741bc78022d81f9317, type: 3}
@@ -122,7 +121,7 @@ MonoBehaviour:
   canShoot: 0
   reloadTime: 0
   cooldown: 0
-  projectileSpeed: 8
+  projectileSpeed: 16
   damage: 0
   fireRate: 0
 --- !u!114 &2217077477884722986
@@ -147,7 +146,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7689034452909022751}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FirePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +179,7 @@ GameObject:
   - component: {fileID: 6991561974434008573}
   - component: {fileID: 7100214269252366512}
   - component: {fileID: 8364640900056747259}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GunSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -241,8 +240,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2019961851
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 25bc005acfbbc394da2093c4f435e231, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

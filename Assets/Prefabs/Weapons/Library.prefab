@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1863873563269346352}
   - component: {fileID: 9093487446408712514}
   - component: {fileID: 704839471975580171}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Library
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1370044909
+  m_SortingLayerID: -2019961851
   m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
@@ -113,10 +113,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01597a6b5191b7c45ba32f6a1dcb82ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accuracy: 0
+  accuracyDeg: 10
+  shotsPerFire: 1
   firePos: {fileID: 4467917748713927158}
   projectilePrefab: {fileID: 8886472317412189262, guid: 196878f0c14be7d488387b636fcdb5ec, type: 3}
-  gunAnimator: {fileID: 0}
   automatic: 0
   canShoot: 0
   reloadTime: 0
@@ -124,7 +124,6 @@ MonoBehaviour:
   projectileSpeed: 7
   damage: 20
   fireRate: 0
-  accuracyDeg: 10
 --- !u!114 &704839471975580171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,7 +147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3869382693764784660}
   - component: {fileID: 3908223838647885657}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GunSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,8 +208,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2019961851
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4ccc8ec5c358bd9419d271d1ec9c5229, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -232,7 +231,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4467917748713927158}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: FirePosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}

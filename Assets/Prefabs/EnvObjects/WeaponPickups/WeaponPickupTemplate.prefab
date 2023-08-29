@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3999358002109971044}
   - component: {fileID: 4541476890484846905}
   - component: {fileID: 3842772911364598381}
+  - component: {fileID: 7594138389907973087}
   m_Layer: 0
   m_Name: WeaponPickupTemplate
   m_TagString: Untagged
@@ -72,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2019961851
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -99,8 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunList: []
+  gunDropList: []
   playerColliding: 0
   gunReference: {fileID: 0}
+  throwDistance: 0
+  throwSpeed: 0
 --- !u!61 &3842772911364598381
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -146,3 +150,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.0001, y: 0.0001}
   m_EdgeRadius: 0
+--- !u!114 &7594138389907973087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2898926758253528382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70877a95c6ae9ef4caa734f4a13530d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  freq: 0.6
+  amplitude: 0.2

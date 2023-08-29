@@ -5,8 +5,10 @@ using UnityEngine;
 public class CratePickup : MonoBehaviour
 {
     protected GameObject containedGun;
+    protected GameObject containedPickup;
 
     [SerializeField] private List<GameObject> gunList = new List<GameObject>();
+    [SerializeField] private List<GameObject> gunDropList = new List<GameObject>();
 
     private int listSize;
 
@@ -17,11 +19,12 @@ public class CratePickup : MonoBehaviour
         listSize = gunList.Count;
 
         containedGun = GetContainedGun();
+        containedPickup = GetDropContained();
     }
 
     void Update()
     {
-        CheckForPickup();
+        CheckForSpawnPickup();
     }
 
     private GameObject GetContainedGun()
@@ -31,12 +34,29 @@ public class CratePickup : MonoBehaviour
         return gunList[randomIndex];
     }
 
+    private GameObject GetDropContained()
+    {
+        int randomIndex = Random.Range(0, listSize);
+
+        return gunDropList[randomIndex];
+    }
+
     protected void CheckForPickup()
     {
         if (playerColliding && Input.GetKeyDown(KeyCode.E))
         {
             GameObject gunManager = GameObject.FindGameObjectWithTag("WeaponManager");
             gunManager.GetComponent<PlayerWeaponManager>().AddGun(containedGun);
+
+            Destroy(gameObject);
+        }
+    }
+
+    private void CheckForSpawnPickup()
+    {
+        if (playerColliding && Input.GetKeyDown(KeyCode.E))
+        {
+            GameObject gunPickup = Instantiate(containedPickup, transform.position, Quaternion.identity);
 
             Destroy(gameObject);
         }
