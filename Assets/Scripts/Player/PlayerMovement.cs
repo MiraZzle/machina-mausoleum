@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         currentSpeed = speed;
+
     }
     
     void Update()

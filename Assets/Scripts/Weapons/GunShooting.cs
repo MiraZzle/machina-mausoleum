@@ -24,14 +24,19 @@ public class GunShooting : MonoBehaviour
 
     private float shootReadyTime = 0f;
 
+    public int maxAmo;
+    public int currentAmo;
+
+
     void Start()
     {
-        
+        currentAmo = maxAmo;
     }
 
     void Update()
     {
         CheckIfShooting();
+        currentAmo = math.clamp(currentAmo, 0, maxAmo);
     }
 
     private void CheckIfShooting()
@@ -40,7 +45,10 @@ public class GunShooting : MonoBehaviour
         {
             for (int i = 0; i < shotsPerFire; i++)
             {
-                Shoot();
+                if (currentAmo > 0)
+                {
+                    Shoot();
+                }
             }
         }
 
@@ -52,6 +60,8 @@ public class GunShooting : MonoBehaviour
 
     private void Shoot()
     {
+        DecreaseAmo();
+
         int bulletDeviation = UnityEngine.Random.Range(-accuracyDeg, accuracyDeg);
         Vector3 spread = new Vector3(0, 0, bulletDeviation);
 
@@ -74,8 +84,21 @@ public class GunShooting : MonoBehaviour
             shootReadyTime = Time.time + 1/fireRate;
             for (int i = 0; i < shotsPerFire; i++)
             {
-                Shoot();
+                if (currentAmo > 0)
+                {
+                    Shoot();
+                }
             }
         }
+    }
+
+    private void DecreaseAmo()
+    {
+        currentAmo--;
+    }
+
+    public void AddAmmo(int amount)
+    {
+        currentAmo += amount;
     }
 }

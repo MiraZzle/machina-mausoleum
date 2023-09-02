@@ -18,6 +18,10 @@ public class GunPickupSpawner : MonoBehaviour
 
     public void SpawnPickup()
     {
-        GameObject pickupInst = Instantiate(weaponPickup, gameObject.transform.position, Quaternion.identity);
+        Vector3 mousePosition = Input.mousePosition;
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        Vector3 spawnOffset = (mousePosition - gameObject.transform.position).normalized;
+
+        GameObject pickupInst = Instantiate(weaponPickup, gameObject.transform.position + spawnOffset * 6, Quaternion.identity);
     }
 }

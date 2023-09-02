@@ -113,6 +113,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4541476890484846905, guid: 8cba6c48c1c6e4a428d6f87c2ccdff17, type: 3}
+      propertyPath: ActiveS
+      value: 
+      objectReference: {fileID: 21300000, guid: 54858703c0dd33d40b7dde13cd48b7ff, type: 3}
+    - target: {fileID: 4541476890484846905, guid: 8cba6c48c1c6e4a428d6f87c2ccdff17, type: 3}
+      propertyPath: spriteRen
+      value: 
+      objectReference: {fileID: 1599879251639081644}
+    - target: {fileID: 4541476890484846905, guid: 8cba6c48c1c6e4a428d6f87c2ccdff17, type: 3}
+      propertyPath: unActiveS
+      value: 
+      objectReference: {fileID: -75271922, guid: 1942b30dfd541d74b9ce691ba73f510f, type: 3}
+    - target: {fileID: 4541476890484846905, guid: 8cba6c48c1c6e4a428d6f87c2ccdff17, type: 3}
       propertyPath: gunReference
       value: 
       objectReference: {fileID: 5880521448009942319, guid: 0185fea6b5fd74143ac30e1938e04f12, type: 3}
@@ -121,3 +133,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cba6c48c1c6e4a428d6f87c2ccdff17, type: 3}
+--- !u!212 &1599879251639081644 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 3999358002109971044, guid: 8cba6c48c1c6e4a428d6f87c2ccdff17, type: 3}
+  m_PrefabInstance: {fileID: 2428420251501093064}
+  m_PrefabAsset: {fileID: 0}

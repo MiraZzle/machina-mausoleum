@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunSprite: {fileID: 236618177189516603}
+  gunUISprite: {fileID: -1375705606, guid: 6105fb1c664de9240bc3610abcd38db6, type: 3}
 --- !u!114 &5424269653103893280
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -240,6 +241,8 @@ MonoBehaviour:
   projectileSpeed: 15
   damage: 5
   fireRate: 12
+  maxAmo: 30
+  currentAmo: 30
 --- !u!114 &5869295281446821957
 MonoBehaviour:
   m_ObjectHideFlags: 0

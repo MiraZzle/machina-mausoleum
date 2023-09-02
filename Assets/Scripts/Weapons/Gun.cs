@@ -6,6 +6,7 @@ using UnityEngine.U2D;
 public class Gun : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer gunSprite;
+    public Sprite gunUISprite;
 
     private float shootPosVert;
 

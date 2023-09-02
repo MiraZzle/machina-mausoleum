@@ -29,6 +29,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 2913893921490958995, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+      propertyPath: maxAmo
+      value: 24
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913893921490958995, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
       propertyPath: firePos
       value: 
       objectReference: {fileID: 6877514586852822618}
@@ -104,6 +108,10 @@ PrefabInstance:
       propertyPath: gunSprite
       value: 
       objectReference: {fileID: 6290438278013100277}
+    - target: {fileID: 5737439222606864353, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+      propertyPath: gunUISprite
+      value: 
+      objectReference: {fileID: 1273686646, guid: 6105fb1c664de9240bc3610abcd38db6, type: 3}
     - target: {fileID: 6953128386287580296, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
       propertyPath: m_Size.x
       value: 0.16

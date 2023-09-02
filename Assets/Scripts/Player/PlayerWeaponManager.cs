@@ -41,6 +41,11 @@ public class PlayerWeaponManager : MonoBehaviour
         ManageRolling();
     }
 
+    public GameObject GetCurrentGun()
+    {
+        return currentGun;
+    }
+
     void ManageRolling()
     {
         if (player.rolling)

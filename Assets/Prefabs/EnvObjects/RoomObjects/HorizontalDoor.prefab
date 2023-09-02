@@ -269,7 +269,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 426426735723525670}
-  - component: {fileID: 7919381353816918930}
   - component: {fileID: 728414666180519499}
   - component: {fileID: 8693216913953871043}
   - component: {fileID: 2488790767893271230}
@@ -301,23 +300,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!111 &7919381353816918930
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7375578108958846050}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 9f8e867caf5cd274ba642aff5647fdde, type: 2}
-  m_Animations:
-  - {fileID: 7400000, guid: c683f1f8d7d9f2f4486c903bf6919074, type: 2}
-  - {fileID: 7400000, guid: cd14c97d016bbdf4f89a6d23b537feff, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!331 &728414666180519499
 SpriteMask:
   m_ObjectHideFlags: 0

@@ -34,6 +34,8 @@ public class ObjectSpawner : MonoBehaviour
     public void SpawnElevator(bool exit, bool entrance)
     {
         ObjectSpawnPoint elevatorSpawner = elevatorPos.GetComponent<ObjectSpawnPoint>();
-        elevatorSpawner.ChooseObject();
+        //elevatorSpawner.elevatorSpawner = true;
+        elevatorPos.GetComponent<ObjectSpawnPoint>().elevatorSpawner = true;
+        elevatorPos.GetComponent<ObjectSpawnPoint>().SpawnElevator(entrance);
     }
 }

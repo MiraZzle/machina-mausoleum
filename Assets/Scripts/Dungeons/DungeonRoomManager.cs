@@ -36,8 +36,6 @@ public class DungeonRoomManager : MonoBehaviour
     private void HandleDoors()
     {
 
-        Debug.Log(doors.Length);
-
         if (Input.GetKeyDown(KeyCode.Backspace) && roomEntered)
         {
             roomCleaned = true;

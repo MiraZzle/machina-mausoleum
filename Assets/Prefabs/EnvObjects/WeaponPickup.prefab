@@ -99,6 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 667c62333c191744ba1bf277e9385b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRen: {fileID: 7004102230587196194}
+  unActiveS: {fileID: -662288530, guid: 1942b30dfd541d74b9ce691ba73f510f, type: 3}
+  ActiveS: {fileID: 21300000, guid: 4450d6a7a93d1b24cb1772c42be25138, type: 3}
   gunList:
   - {fileID: 7273209203792596813, guid: 469b49025f72d1842ac4eed1362e5085, type: 3}
   - {fileID: 6452737787199462770, guid: c2dcdb59ef5f8cd4ca0fc386625ce10b, type: 3}
