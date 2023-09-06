@@ -101,4 +101,10 @@ public class GunShooting : MonoBehaviour
     {
         currentAmo += amount;
     }
+
+    public void SetAmo(int amo)
+    {
+        Debug.Log(amo);
+        currentAmo = amo;
+    }
 }

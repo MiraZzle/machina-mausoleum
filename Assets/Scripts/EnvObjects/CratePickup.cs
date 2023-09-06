@@ -15,6 +15,8 @@ public class CratePickup : MonoBehaviour
     [SerializeField] private List<GameObject> gunList = new List<GameObject>();
     [SerializeField] private List<GameObject> gunDropList = new List<GameObject>();
 
+
+
     private int listSize;
 
     public bool playerColliding = false;
@@ -47,19 +49,9 @@ public class CratePickup : MonoBehaviour
         return gunDropList[randomIndex];
     }
 
-    protected void CheckForPickup()
-    {
-        if (playerColliding && Input.GetKeyDown(KeyCode.E))
-        {
-            GameObject gunManager = GameObject.FindGameObjectWithTag("WeaponManager");
-            gunManager.GetComponent<PlayerWeaponManager>().AddGun(containedGun);
-
-            Destroy(gameObject);
-        }
-    }
-
     private void CheckForSpawnPickup()
     {
+
         if (playerColliding && Input.GetKeyDown(KeyCode.E))
         {
             GameObject gunPickup = Instantiate(containedPickup, transform.position, Quaternion.identity);
@@ -73,7 +65,6 @@ public class CratePickup : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             playerColliding = true;
-            //spriteRen.sprite = ActiveS;
         }
     }
 
@@ -82,7 +73,8 @@ public class CratePickup : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             playerColliding = false;
-            //spriteRen.sprite = unActiveS;
         }
     }
+
+
 }

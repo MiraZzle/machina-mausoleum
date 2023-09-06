@@ -38,4 +38,10 @@ public class ObjectSpawnPoint : MonoBehaviour
         GameObject objectInstance = Instantiate(objectToSpawn, gameObject.transform.position, Quaternion.identity);
         objectInstance.GetComponent<ElevatorManager>().SetState(etrance);
     }
+
+    public void SpawnKeyPosition()
+    {
+        GameObject objectToSpawn = roomObjects[0];
+        GameObject objectInstance = Instantiate(objectToSpawn, gameObject.transform.position, Quaternion.identity);
+    }
 }

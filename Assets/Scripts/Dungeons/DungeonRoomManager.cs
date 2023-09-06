@@ -10,6 +10,8 @@ public class DungeonRoomManager : MonoBehaviour
     public bool isExitRoom = false;
     public bool isSpawnRoom = false;
 
+    public bool isKeyRoom = false;
+
     public bool roomEntered = false;
     public bool roomCleaned = false;
 
@@ -50,7 +52,7 @@ public class DungeonRoomManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!isSpawnRoom && !isExitRoom)
+        if (!isSpawnRoom && !isExitRoom && !isKeyRoom)
         {
             if (collision.CompareTag("Player") && !roomEntered)
             {
@@ -78,14 +80,21 @@ public class DungeonRoomManager : MonoBehaviour
     {
         ObjectSpawner spawnerRef = objectSpawner.GetComponent<ObjectSpawner>();
 
-        if (!isExitRoom && !isSpawnRoom)
+        if (!isExitRoom && !isSpawnRoom && !isKeyRoom)
         {
             spawnerRef.SpawnObjects();
         }
 
-        else
+        else 
         {
-            spawnerRef.SpawnElevator(isExitRoom, isSpawnRoom);
+            if (isKeyRoom)
+            {
+                spawnerRef.SpawnKeyStructure();
+            }
+            else
+            {
+                spawnerRef.SpawnElevator(isExitRoom, isSpawnRoom);
+            }
         }
     }
 }

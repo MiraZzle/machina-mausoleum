@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7594138389907973087}
   m_Layer: 0
   m_Name: WeaponPickupTemplate
-  m_TagString: Untagged
+  m_TagString: PickupItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20d6527dc08b2e34498667b481238c08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteRen: {fileID: 0}
+  unActiveS: {fileID: 0}
+  ActiveS: {fileID: 0}
   gunList: []
   gunDropList: []
   playerColliding: 0

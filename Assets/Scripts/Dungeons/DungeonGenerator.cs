@@ -44,11 +44,20 @@ public class DungeonGenerator : MonoBehaviour
 
         public bool generatedChildren = false;
         public bool isGenerated = false;
+
+        public bool isKeyRoom = false;
         public bool isStarting = false;
         public bool isExit = false;
 
 
         private int minNeighbouringRooms = 2;
+
+        public enum roomTypes {
+            normal,
+            key,
+            spawn,
+            exit
+        }
 
         public Vector2[] getNeihbourRooms()
         {
@@ -164,6 +173,7 @@ public class DungeonGenerator : MonoBehaviour
             currentRoom.isGenerated = true;
         }
 
+        roomHolder[roomHolder.Count - 3].isKeyRoom = true;
         roomHolder.Last().isExit = true;
     }
 
@@ -196,6 +206,11 @@ public class DungeonGenerator : MonoBehaviour
             if (item.isStarting)
             {
                 r.GetComponent<DungeonRoomManager>().isSpawnRoom = true;
+            }
+
+            if (item.isKeyRoom)
+            {
+                r.GetComponent<DungeonRoomManager>().isKeyRoom = true;
             }
         }
     }

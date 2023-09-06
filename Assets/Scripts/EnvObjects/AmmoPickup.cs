@@ -14,6 +14,7 @@ public class AmmoPickup : KeyPickup
     {
         weaponManager = GameObject.FindGameObjectWithTag("WeaponManager");
         ammoHeld = Random.Range(minAmmo, maxAmmo);
+
     }
 
 

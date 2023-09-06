@@ -46,6 +46,11 @@ public class PlayerWeaponManager : MonoBehaviour
         return currentGun;
     }
 
+    public void SetCurrentAmo(int amo)
+    {
+        currentGun.GetComponent<GunShooting>().SetAmo(amo);
+    }
+
     void ManageRolling()
     {
         if (player.rolling)
@@ -118,7 +123,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
         else
         {
-            currentGun.GetComponent<GunPickupSpawner>().SpawnPickup();
+            currentGun.GetComponent<GunPickupSpawner>().SpawnPickup(currentGun.GetComponent<GunShooting>().currentAmo);
 
             Destroy(currentGun); 
             currentGun = addedGun;

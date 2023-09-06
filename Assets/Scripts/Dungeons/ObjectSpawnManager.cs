@@ -9,6 +9,7 @@ public class ObjectSpawner : MonoBehaviour
 
     [SerializeField] private Transform[] artificialWallPos;
     [SerializeField] private Transform elevatorPos;
+    [SerializeField] private Transform keySpawnPos;
 
 
     void Start()
@@ -37,5 +38,10 @@ public class ObjectSpawner : MonoBehaviour
         //elevatorSpawner.elevatorSpawner = true;
         elevatorPos.GetComponent<ObjectSpawnPoint>().elevatorSpawner = true;
         elevatorPos.GetComponent<ObjectSpawnPoint>().SpawnElevator(entrance);
+    }
+
+    public void SpawnKeyStructure()
+    {
+        keySpawnPos.GetComponent<ObjectSpawnPoint>().SpawnKeyPosition();
     }
 }

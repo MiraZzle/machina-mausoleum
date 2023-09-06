@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3993238505278558627}
   m_Layer: 0
   m_Name: ElevatorKey
-  m_TagString: Untagged
+  m_TagString: PickupItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
