@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BotEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2377847908749716938, guid: 3f6390833f879be469bfde745fdba837, type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2377847908749716938, guid: 3f6390833f879be469bfde745fdba837, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5030410566962402225, guid: 3f6390833f879be469bfde745fdba837, type: 3}
       propertyPath: m_Size.x
       value: 0.5706814
@@ -21,12 +29,20 @@ PrefabInstance:
       value: 0.6817522
       objectReference: {fileID: 0}
     - target: {fileID: 5030410566962402225, guid: 3f6390833f879be469bfde745fdba837, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5030410566962402225, guid: 3f6390833f879be469bfde745fdba837, type: 3}
       propertyPath: m_Offset.x
       value: 0.015145987
       objectReference: {fileID: 0}
     - target: {fileID: 5030410566962402225, guid: 3f6390833f879be469bfde745fdba837, type: 3}
       propertyPath: m_Offset.y
       value: -0.11107081
+      objectReference: {fileID: 0}
+    - target: {fileID: 5030410566962402225, guid: 3f6390833f879be469bfde745fdba837, type: 3}
+      propertyPath: m_AutoTiling
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5030410566962402225, guid: 3f6390833f879be469bfde745fdba837, type: 3}
       propertyPath: m_SpriteTilingProperty.pivot.x
@@ -66,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8272204664357509204, guid: 3f6390833f879be469bfde745fdba837, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8272204664357509204, guid: 3f6390833f879be469bfde745fdba837, type: 3}
       propertyPath: m_LocalRotation.w
@@ -111,6 +127,21 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2377847908749716938, guid: 3f6390833f879be469bfde745fdba837, type: 3}
       insertIndex: -1
       addedObject: {fileID: 698716653569507182}
+    - targetCorrespondingSourceObject: {fileID: 2377847908749716938, guid: 3f6390833f879be469bfde745fdba837, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7237901461058273527}
+    - targetCorrespondingSourceObject: {fileID: 2377847908749716938, guid: 3f6390833f879be469bfde745fdba837, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6693866639741664121}
+    - targetCorrespondingSourceObject: {fileID: 2377847908749716938, guid: 3f6390833f879be469bfde745fdba837, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8979592515986906840}
+    - targetCorrespondingSourceObject: {fileID: 2377847908749716938, guid: 3f6390833f879be469bfde745fdba837, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3609124615540585279}
+    - targetCorrespondingSourceObject: {fileID: 2377847908749716938, guid: 3f6390833f879be469bfde745fdba837, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 52995891541166236}
   m_SourcePrefab: {fileID: 100100000, guid: 3f6390833f879be469bfde745fdba837, type: 3}
 --- !u!1 &3457869816240266638 stripped
 GameObject:
@@ -138,3 +169,102 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!195 &7237901461058273527
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457869816240266638}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.2
+  m_Speed: 3
+  m_Acceleration: 8
+  avoidancePriority: 69
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1
+  m_BaseOffset: 0.5
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &6693866639741664121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457869816240266638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe5c03c02dd0e5b4da376b18b9a1aafc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  physicsCollider: {fileID: 5389851731101164533}
+  animator: {fileID: 698716653569507182}
+  agent: {fileID: 7237901461058273527}
+  spriteRenderer: {fileID: 8642871973215065109}
+  currentState: 0
+--- !u!114 &8979592515986906840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457869816240266638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 544d3d908b016d8499aedcc0458747c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axeSpawner: {fileID: 52995891541166236}
+  maxHealth: 4
+  flasher: {fileID: 3609124615540585279}
+  mover: {fileID: 6693866639741664121}
+--- !u!114 &3609124615540585279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457869816240266638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f28adcec6125a845a0c3d8e7a8de82d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageMaterial: {fileID: 2100000, guid: c89fdf1522678144c9b4e6516a481172, type: 2}
+  normalMaterial: {fileID: 0}
+  spriteRenderer: {fileID: 8642871973215065109}
+  flashDuration: 0.15
+  belongsToPlayer: 0
+--- !u!114 &52995891541166236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457869816240266638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c618552fc7510114da096210690a61f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  axePrefab: {fileID: 1140747160828820021, guid: 1e16692351b97994587cb5f310e53985, type: 3}
+  rotationalSpeed: 0
+  axeCount: 2
+  axeList: []
+  fullRotationDeg: 360
+--- !u!61 &5389851731101164533 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 5030410566962402225, guid: 3f6390833f879be469bfde745fdba837, type: 3}
+  m_PrefabInstance: {fileID: 1081710903459934276}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &8642871973215065109 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8715208623662081105, guid: 3f6390833f879be469bfde745fdba837, type: 3}
+  m_PrefabInstance: {fileID: 1081710903459934276}
+  m_PrefabAsset: {fileID: 0}

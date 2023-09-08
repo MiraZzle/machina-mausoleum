@@ -112,6 +112,8 @@ MonoBehaviour:
   - {fileID: 1085941806924233263, guid: 2f6b4bf7b6bad5241aaa071e59790b83, type: 3}
   - {fileID: 7550371450767860925, guid: c2135b1b71944994babe4ddc87b08add, type: 3}
   - {fileID: 6816998555247905709, guid: c65d16d985f8766479a1bf3ab4cebc9d, type: 3}
+  - {fileID: 4855520803684046638, guid: 5021a40fa6fdf1b4294dd81034091f34, type: 3}
+  - {fileID: 4855520803684046638, guid: 5021a40fa6fdf1b4294dd81034091f34, type: 3}
   playerColliding: 0
 --- !u!61 &1153600778755618701
 BoxCollider2D:
@@ -170,5 +172,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70877a95c6ae9ef4caa734f4a13530d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  freq: 0.2
-  amplitude: 1
+  freq: 0.6
+  amplitude: 0.2

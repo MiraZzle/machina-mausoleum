@@ -9,7 +9,7 @@ public class DamageFlasher : MonoBehaviour
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
-    [SerializeField] private float flashDuration;
+    [SerializeField] private float flashDuration = 0.15f;
     [SerializeField] private bool belongsToPlayer = false;
 
     private Coroutine flashCoroutine;

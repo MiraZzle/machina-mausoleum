@@ -5,7 +5,7 @@ using UnityEngine;
 public static class PlayerStateTracker
 {
     public static int maxHealth = 8;
-    public static int currentHealth = 3;
+    public static int currentHealth = maxHealth;
 
     public static bool keyObtained = false;
 
@@ -17,6 +17,8 @@ public static class PlayerStateTracker
 
     public delegate void OnDamageTaken();
     public static OnDamageTaken onDamageTaken;
+    public static bool playerVulnerable = true;
+
     static void Start()
     {
         
@@ -26,6 +28,19 @@ public static class PlayerStateTracker
 
     }
 
+    public static void DealDamage(int amount)
+    {
+        if (playerVulnerable)
+        {
+            ChangeHealth(-amount);
+        }
+    }
+
+    public static void HealPlayer(int amount)
+    {
+        ChangeHealth(amount);
+    }
+
     public static void ChangeHealth(int amount)
     {
         currentHealth += amount;
@@ -33,11 +48,10 @@ public static class PlayerStateTracker
         onDamageTaken();
     }
 
-
-
-
-
-
-
-
+    public static void ReloadGame()
+    {
+        currentHealth = maxHealth;
+        enemiesKilled = 0;
+        keyObtained = false;
+    }
 }

@@ -64,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Dash()
     {
+        PlayerStateTracker.playerVulnerable = false;
         animator.SetBool("dashing", true);
 
         currentSpeed = dashSpeed;
@@ -84,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
 
                 animator.SetBool("dashing", false);
                 rolling = false;
-
+                PlayerStateTracker.playerVulnerable = true;
             }
         }
 

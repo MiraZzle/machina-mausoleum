@@ -239,7 +239,7 @@ MonoBehaviour:
   reloadTime: 0
   cooldown: 0
   projectileSpeed: 10
-  damage: 0
+  damage: 8
   fireRate: 0
   maxAmo: 50
   currentAmo: 0

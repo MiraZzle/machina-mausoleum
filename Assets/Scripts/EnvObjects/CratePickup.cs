@@ -54,6 +54,7 @@ public class CratePickup : MonoBehaviour
 
         if (playerColliding && Input.GetKeyDown(KeyCode.E))
         {
+            Debug.Log("yes");
             GameObject gunPickup = Instantiate(containedPickup, transform.position, Quaternion.identity);
 
             Destroy(gameObject);

@@ -7,6 +7,8 @@ TagManager:
   - WeaponManager
   - Door
   - PickupItem
+  - Enemy
+  - EnemySpawnPoint
   layers:
   - Default
   - TransparentFX
@@ -20,7 +22,7 @@ TagManager:
   - Walls
   - Particle
   - Pickups
-  - 
+  - Enemies
   - 
   - 
   - 

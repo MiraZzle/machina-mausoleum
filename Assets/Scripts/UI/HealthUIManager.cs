@@ -11,6 +11,7 @@ public class HealthUIManager : MonoBehaviour
     void Start()
     {
         maxHealth = PlayerStateTracker.maxHealth;
+        ClearHearts();
         RedrawHearts();
         UpdateHearts();
         PlayerStateTracker.onDamageTaken += UpdateHearts;
@@ -46,7 +47,6 @@ public class HealthUIManager : MonoBehaviour
         for (int i = 0; i < hearts.Count; i++)
         {
             int heartFilling = (int)Mathf.Clamp(PlayerStateTracker.currentHealth - (i * 2), 0, 2);
-            Debug.Log(heartFilling);
 
             hearts[i].SetState((HeartUI.heartStates)heartFilling);
         }

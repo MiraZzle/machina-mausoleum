@@ -15,6 +15,7 @@ public class DungeonRoomManager : MonoBehaviour
     public bool roomEntered = false;
     public bool roomCleaned = false;
 
+    [SerializeField] GameObject enemySpawner;
     [SerializeField] GameObject objectSpawner;
     [SerializeField] GameObject[] doors;
 
@@ -23,12 +24,23 @@ public class DungeonRoomManager : MonoBehaviour
 
     // side order = {top, right, bottom, left}
     [SerializeField] private bool[] activeSides = new bool[4];
+    [SerializeField] private GameObject navmesh;
+
+    public enum roomTypes
+    {
+        normal,
+        key,
+        spawn,
+        exit
+    }
+
+    public roomTypes roomType;
 
     void Start()
     {
         HandleDoors();
         SignalSpawner();
-
+        navmesh.GetComponent<NavmeshBaker>().BakeNavmesh();
     }
 
     void Update()
@@ -50,6 +62,15 @@ public class DungeonRoomManager : MonoBehaviour
 
     }
 
+    public void OpenDoors()
+    {
+        roomCleaned = true;
+        foreach (var door in doors)
+        {
+            door.GetComponent<DoorManager>().roomCleared = true;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (!isSpawnRoom && !isExitRoom && !isKeyRoom)
@@ -61,6 +82,7 @@ public class DungeonRoomManager : MonoBehaviour
                     roomEntered = true;
                     door.GetComponent<DoorManager>().roomEntered = true;
                 }
+                enemySpawner.GetComponent<EnemySpawner>().SpawnEnemies();
             }
         }
     }

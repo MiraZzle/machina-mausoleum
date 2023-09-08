@@ -36,7 +36,7 @@ public class ElevatorManager : MonoBehaviour
             {
                 animator.SetBool("unlocked", true);
                 PlayerStateTracker.keyObtained = false;
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+                LevelManager.LoadLevel();
             }
         }
     }

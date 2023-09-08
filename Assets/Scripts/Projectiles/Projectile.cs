@@ -5,17 +5,25 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private GameObject explosionParticles;
+    private int projectileDamage;
     void Update()
     {
         
     }
 
+    public void SetDamage(int damage)
+    {
+        projectileDamage = damage;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Player"))
+
+        if (collision.CompareTag("Enemy"))
         {
-            //GameObject explosionInst = Instantiate(explosionParticles, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            collision.GetComponent<EnemyHealthHandler>().TakeDamage(projectileDamage);
         }
+        Destroy(gameObject);
+
     }
 }

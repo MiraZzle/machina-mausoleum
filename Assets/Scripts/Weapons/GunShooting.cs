@@ -19,7 +19,7 @@ public class GunShooting : MonoBehaviour
     [SerializeField] private float reloadTime;
     [SerializeField] private float cooldown;
     [SerializeField] private float projectileSpeed = 10f;
-    [SerializeField] private float damage;
+    [SerializeField] private int damage;
     [SerializeField] private float fireRate;
 
     private float shootReadyTime = 0f;
@@ -67,6 +67,7 @@ public class GunShooting : MonoBehaviour
 
         GameObject projectile = Instantiate(projectilePrefab, firePos.position, Quaternion.Euler(firePos.rotation.eulerAngles + spread));
         Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
+        projectile.GetComponent<Projectile>().SetDamage(damage);
 
         rb.AddForce(projectile.transform.right * projectileSpeed, ForceMode2D.Impulse);
 

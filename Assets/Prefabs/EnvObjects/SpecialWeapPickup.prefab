@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 3524950230529047171, guid: b8fdbbb1991bdd34285229833aa9cd82, type: 3}
     - target: {fileID: 731295118459213906, guid: cc6baa92752580b43b434bab515e21b2, type: 3}
       propertyPath: gunDropList.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 731295118459213906, guid: cc6baa92752580b43b434bab515e21b2, type: 3}
       propertyPath: gunDropList.Array.data[0]
@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: gunDropList.Array.data[2]
       value: 
       objectReference: {fileID: 906408256912160064, guid: ded36b385f6266a41b949e5592dd9ba8, type: 3}
+    - target: {fileID: 731295118459213906, guid: cc6baa92752580b43b434bab515e21b2, type: 3}
+      propertyPath: gunDropList.Array.data[3]
+      value: 
+      objectReference: {fileID: 4561710895717947256, guid: 6512a87be07c25545a38aa0456d7c2d7, type: 3}
     - target: {fileID: 4985882086053711476, guid: cc6baa92752580b43b434bab515e21b2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

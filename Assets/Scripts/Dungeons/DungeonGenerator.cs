@@ -49,9 +49,10 @@ public class DungeonGenerator : MonoBehaviour
         public bool isStarting = false;
         public bool isExit = false;
 
-
+        private int neighbourRoomCount = 3;
         private int minNeighbouringRooms = 2;
 
+        public roomTypes roomType;
         public enum roomTypes {
             normal,
             key,
@@ -65,10 +66,10 @@ public class DungeonGenerator : MonoBehaviour
             if (isStarting)
             {
 
-                return generateNeighbours(minNeighbouringRooms, 4);
+                return generateNeighbours(minNeighbouringRooms, sideCount);
             }
 
-            return generateNeighbours(minNeighbouringRooms, 3);
+            return generateNeighbours(minNeighbouringRooms, neighbourRoomCount);
 
         }
 
@@ -108,13 +109,9 @@ public class DungeonGenerator : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            ReloadGenerator();
+            LevelManager.LoadLevel();
+            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-    }
-
-    private void ReloadGenerator()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private void GenerateMap()
