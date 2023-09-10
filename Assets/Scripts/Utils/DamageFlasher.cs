@@ -20,6 +20,7 @@ public class DamageFlasher : MonoBehaviour
         if (belongsToPlayer)
         {
             PlayerStateTracker.onDamageTaken += FlashOnDamage;
+            PlayerStateTracker.playerDied += ResetMaterial;
         }
 
         normalMaterial = spriteRenderer.material;
@@ -54,5 +55,10 @@ public class DamageFlasher : MonoBehaviour
         spriteRenderer.material = normalMaterial;
 
         flashCoroutine = null;
+    }
+
+    private void ResetMaterial()
+    {
+        spriteRenderer.material = normalMaterial;
     }
 }

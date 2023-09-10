@@ -157,7 +157,7 @@ MonoBehaviour:
   dashCoolCounter: 0
   dashCounter: 0
   dashDuration: 0.75
-  dashCooldown: 1
+  dashCooldown: 0.8
   rolling: 0
   dashSpeed: 7
   speed: 4
@@ -308,6 +308,21 @@ MonoBehaviour:
   currentGun: {fileID: 0}
   gunList: []
   maxGunCount: 3
+  gunPairs:
+  - gunName: Automatica
+    gunRef: {fileID: 7273209203792596813, guid: 469b49025f72d1842ac4eed1362e5085, type: 3}
+  - gunName: DoubleBarrel
+    gunRef: {fileID: 3524950230529047171, guid: b8fdbbb1991bdd34285229833aa9cd82, type: 3}
+  - gunName: Library
+    gunRef: {fileID: 5880521448009942319, guid: 0185fea6b5fd74143ac30e1938e04f12, type: 3}
+  - gunName: Pistol
+    gunRef: {fileID: 6452737787199462770, guid: c2dcdb59ef5f8cd4ca0fc386625ce10b, type: 3}
+  - gunName: RifleGun
+    gunRef: {fileID: 301002570867677192, guid: 30ea3b8becffe5241b6d336f3a07c411, type: 3}
+  - gunName: Shotgun
+    gunRef: {fileID: 373240785242598086, guid: 59c8dd0f8c9a6d84798536a28e566f31, type: 3}
+  - gunName: Toaster
+    gunRef: {fileID: 3191293061927606596, guid: 7b6b72aeb219a8c4e961c3e16666b373, type: 3}
 --- !u!1001 &8612242479032142387
 PrefabInstance:
   m_ObjectHideFlags: 0

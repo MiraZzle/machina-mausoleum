@@ -220,6 +220,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 544d3d908b016d8499aedcc0458747c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isRanged: 0
   axeSpawner: {fileID: 52995891541166236}
   maxHealth: 4
   flasher: {fileID: 3609124615540585279}

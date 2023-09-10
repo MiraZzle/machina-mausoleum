@@ -9,7 +9,9 @@ public static class PlayerStateTracker
 
     public static bool keyObtained = false;
 
-    public static List<GameObject> gunInventory;
+    public static string[] gunInventory;
+
+
     public static int currentGunIndex;
     public static GameObject currentGun;
 
@@ -17,7 +19,12 @@ public static class PlayerStateTracker
 
     public delegate void OnDamageTaken();
     public static OnDamageTaken onDamageTaken;
+
+    public delegate void PlayerDied();
+    public static PlayerDied playerDied;
+
     public static bool playerVulnerable = true;
+    public static bool dead = false;
 
     static void Start()
     {
@@ -46,12 +53,26 @@ public static class PlayerStateTracker
         currentHealth += amount;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
         onDamageTaken();
+
+        if (currentHealth <= 0)
+        {
+            dead = true;
+            playerDied();
+        }
     }
 
     public static void ReloadGame()
     {
+        GameStateManager.gamePaused = false;
+        dead = false;
         currentHealth = maxHealth;
         enemiesKilled = 0;
         keyObtained = false;
+    }
+
+    public static void NullDelegates()
+    {
+        onDamageTaken = null;
+        playerDied = null;
     }
 }

@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer sprite;
 
+
     public float dashCoolCounter = 0f;
     public float dashCounter = 0f;
     public float dashDuration = 0.8f;
@@ -27,34 +28,42 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         currentSpeed = speed;
-
+        PlayerStateTracker.playerDied += PlayOnDeath;
     }
     
     void Update()
     {
-        movementDirections.x = Input.GetAxisRaw("Horizontal");
-        movementDirections.y = Input.GetAxisRaw("Vertical");
+        GetDirectionalInput();
+        HandleAnimation();
+
 
         velocity = movementDirections.normalized * currentSpeed;
 
-        HandleAnimation();
-        FlipToMouse();
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (!GameStateManager.gamePaused)
         {
-            if (dashCoolCounter <= 0 && dashCounter <= 0)
+            FlipToMouse();
+
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                Dash();
+                if (dashCoolCounter <= 0 && dashCounter <= 0)
+                {
+                    Dash();
+                }
             }
+
+            ManageDash();
         }
-
-        ManageDash();
-
     }
 
     private void FixedUpdate()
     {
         Move();
+    }
+
+    private void GetDirectionalInput()
+    {
+        movementDirections.x = Input.GetAxisRaw("Horizontal");
+        movementDirections.y = Input.GetAxisRaw("Vertical");
     }
 
     private void Move()
@@ -120,6 +129,12 @@ public class PlayerMovement : MonoBehaviour
         {
             sprite.flipX = true;
         }
+    }
+
+    private void PlayOnDeath()
+    {
+        animator.SetTrigger("Died");
+        animator.updateMode = AnimatorUpdateMode.UnscaledTime;
     }
 }
 

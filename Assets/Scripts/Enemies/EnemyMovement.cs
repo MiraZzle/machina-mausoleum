@@ -5,12 +5,13 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    private Transform playerTarget;
+    protected Transform playerTarget;
+    public bool dead = false;
 
-    [SerializeField] private Collider2D physicsCollider;
-    [SerializeField] private Animator animator;
-    [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] protected Collider2D physicsCollider;
+    [SerializeField] protected Animator animator;
+    [SerializeField] protected NavMeshAgent agent;
+    [SerializeField] protected SpriteRenderer spriteRenderer;
 
     public enum movementStates
     {
@@ -20,21 +21,22 @@ public class EnemyMovement : MonoBehaviour
         dead
     }
 
-    public movementStates currentState;
+    protected movementStates currentState;
 
-    void Start()
+    protected void Start()
     {
+        animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         SetupAgent();
         currentState = movementStates.moving;
     }
 
-    void Update()
+    protected void Update()
     {
         StateLogic();
     }
 
-    private void SetupAgent()
+    protected void SetupAgent()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.updateRotation = false;
@@ -43,19 +45,29 @@ public class EnemyMovement : MonoBehaviour
         playerTarget = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
-    private void CheckForSpriteFlip()
+    protected void CheckForSpriteFlip()
     {
         spriteRenderer.flipX = !(agent.desiredVelocity.x > 0);
     }
 
     public void Die()
     {
-        currentState = movementStates.dead;
         animator.SetTrigger("Died");
         physicsCollider.enabled = false;
+        agent.enabled = false;
+        ChangeState(movementStates.dead);
+        dead = true;
     }
 
-    private void StateLogic()
+    public void ChangeState(movementStates targetState)
+    {
+        if (currentState != movementStates.dead)
+        {
+            currentState = targetState;
+        }
+    }
+
+    protected virtual void StateLogic()
     {
         switch (currentState)
         {

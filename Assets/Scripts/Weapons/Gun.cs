@@ -6,33 +6,44 @@ using UnityEngine.U2D;
 public class Gun : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer gunSprite;
+
+    public bool ownedByPlayer = true;
+
     public Sprite gunUISprite;
 
-    private float shootPosVert;
-
+    private GameObject player;
     private Vector3 mousePosition;
 
     void Start()
     {
-
+        player = GameObject.FindGameObjectWithTag("Player");
     }
     void Update()
     {
-        RotateTowardsMouse();
+        if (!GameStateManager.gamePaused)
+        {
+            PassTarget();
+        }
     }
 
-    private void FixedUpdate()
+    private void PassTarget()
     {
-        
-    }
-
-    private void RotateTowardsMouse()
-    {
-
         mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-        Vector2 rotationTarget = mousePosition - transform.position;
+        if (ownedByPlayer)
+        {
+            RotateTowardsTarget(mousePosition);
+        }
+        else
+        {
+            RotateTowardsTarget(player.transform.position);
+        }
+    }
+
+    private void RotateTowardsTarget(Vector3 target)
+    {
+        Vector2 rotationTarget = target - transform.position;
 
         float angle = Mathf.Atan2(rotationTarget.y, rotationTarget.x) * Mathf.Rad2Deg;
 
@@ -41,7 +52,7 @@ public class Gun : MonoBehaviour
         transform.rotation = rot;
 
 
-        if (mousePosition.x > transform.position.x)
+        if (target.x > transform.position.x)
         {
             gunSprite.transform.localScale = new Vector3(1,1,1);
         }

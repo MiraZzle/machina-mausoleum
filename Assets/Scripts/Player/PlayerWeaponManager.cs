@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class PlayerWeaponManager : MonoBehaviour
 {
@@ -18,11 +21,24 @@ public class PlayerWeaponManager : MonoBehaviour
 
     [SerializeField] private int maxGunCount = 3;
 
+    [Serializable]
+    public struct gunPair
+    {
+        public string gunName;
+        public GameObject gunRef;
+    }
+
+    public gunPair[] gunPairs;
+
 
 
     void Start()
     {
         UpdateGuns();
+        //LevelManager.levelChanged += SaveGuns;
+        PlayerStateTracker.gunInventory.Append("Shotgun");
+
+        LoadGuns();
     }
 
     void Update()
@@ -134,6 +150,35 @@ public class PlayerWeaponManager : MonoBehaviour
             SwitchWeapon(0);
 
             UpdateGuns();
+        }
+    }
+    
+    // nebo singletion class
+    // use pair key - prefab! -> tady budes asi muset vyuzit neco jineho nez list nebo array
+    public void SaveGuns()
+    {
+        foreach (var gun in gunList)
+        {
+            PlayerStateTracker.gunInventory.Append(gun.gameObject.name);
+        }
+    }
+
+    private void LoadGuns()
+    {
+        foreach (var item in PlayerStateTracker.gunInventory)
+        {
+            AddFromGunReferences(item);
+        }
+    }
+
+    private void AddFromGunReferences(string nameToAdd)
+    {
+        foreach (var pair in gunPairs)
+        {
+            if (pair.gunName == nameToAdd)
+            {
+                AddGun(pair.gunRef);
+            }
         }
     }
 }

@@ -10,10 +10,12 @@ public static class LevelManager
 
     public delegate void LevelChanged();
     public static LevelChanged levelChanged;
-    static void Start()
-    {
-        
-    }
+
+    private static string menuName = "MainMenu";
+    private static string bossLevelName = "BossLevel";
+    private static string normalLevelName = "GunRange";
+
+
 
     static void Update()
     {
@@ -22,32 +24,40 @@ public static class LevelManager
 
     public static void LoadLevel()
     {
-        PlayerStateTracker.onDamageTaken = null;
+        levelChanged();
+
+        levelChanged = null;
         PlayerStateTracker.playerVulnerable = true;
+        PlayerStateTracker.NullDelegates();
+
+        GameStateManager.gamePaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         currentLevel++;
     }
 
-    public static void LoadNextLevel()
+    public static void ExitGame()
     {
-        levelChanged();
-        PlayerStateTracker.onDamageTaken = null; // would throw null reference error
+        Application.Quit();
+    }
 
-        currentLevel++;
-
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
-        levelChanged = null;
+    public static void StartGame()
+    {
+        ReloadGame();
+        PlayerStateTracker.NullDelegates();
+        SceneManager.LoadScene(normalLevelName);
     }
 
     public static void LoadMenu()
     {
-    
+        SceneManager.LoadScene(menuName);
     }
 
     public static void ReloadGame()
     {
+        GameStateManager.gamePaused = false;
+        Time.timeScale = 1;
         currentLevel = 1;
+        PlayerStateTracker.NullDelegates();
         PlayerStateTracker.ReloadGame();
     }
 }

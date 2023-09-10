@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gunSprite: {fileID: 7100214269252366512}
+  ownedByPlayer: 1
   gunUISprite: {fileID: -1323882023, guid: 6105fb1c664de9240bc3610abcd38db6, type: 3}
 --- !u!114 &3064494189846347435
 MonoBehaviour:
@@ -121,10 +122,11 @@ MonoBehaviour:
   automatic: 0
   canShoot: 0
   reloadTime: 0
-  cooldown: 0
   projectileSpeed: 16
   damage: 4
   fireRate: 0
+  ownedByPlayer: 1
+  cooldown: 3
   maxAmo: 12
   currentAmo: 0
 --- !u!114 &2217077477884722986

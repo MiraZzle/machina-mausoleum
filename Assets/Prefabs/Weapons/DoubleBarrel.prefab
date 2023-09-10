@@ -41,6 +41,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6877514586852822618}
     - target: {fileID: 2913893921490958995, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+      propertyPath: cooldown
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913893921490958995, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
       propertyPath: accuracyDeg
       value: 20
       objectReference: {fileID: 0}

@@ -35,7 +35,11 @@ public class GunShooting : MonoBehaviour
 
     void Update()
     {
-        CheckIfShooting();
+        if (!GameStateManager.gamePaused)
+        {
+            CheckIfShooting();
+        }
+
         currentAmo = math.clamp(currentAmo, 0, maxAmo);
     }
 

@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class EnemyHealthHandler : MonoBehaviour
 {
+    [SerializeField] private bool isRanged = true;
     [SerializeField] private AxeSpawner axeSpawner;
     [SerializeField] private int maxHealth = 6;
     [SerializeField] private DamageFlasher flasher;
     private int currentHealth;
+    private bool died = false;
 
     [SerializeField] private EnemyMovement mover;
 
@@ -34,9 +36,27 @@ public class EnemyHealthHandler : MonoBehaviour
         }
         else
         {
-            mover.Die();
-            axeSpawner.DisableAxes();
-            transform.parent.GetComponent<EnemySpawner>().EnemyKilled();
+            if (!isRanged)
+            {
+                axeSpawner.DisableAxes();
+            }
+
+            if (!died)
+            {
+                PlayerStateTracker.enemiesKilled++;
+                flasher.FlashOnDamage();
+                mover.Die();
+                transform.parent.GetComponent<EnemySpawner>().EnemyKilled();
+            }
+
+            died = true;
+
+            //Invoke("DestroyOnDeath", 5);
         }
+    }
+
+    private void DestroyOnDeath()
+    {
+        Destroy(gameObject);
     }
 }
