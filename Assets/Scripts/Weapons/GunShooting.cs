@@ -10,6 +10,7 @@ public class GunShooting : MonoBehaviour
     [SerializeField] private int accuracyDeg;
     [SerializeField] private int shotsPerFire = 1;
 
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private Transform firePos;
     [SerializeField] private GameObject projectilePrefab;
 
@@ -21,16 +22,22 @@ public class GunShooting : MonoBehaviour
     [SerializeField] private float projectileSpeed = 10f;
     [SerializeField] private int damage;
     [SerializeField] private float fireRate;
+    [SerializeField] private AudioClip shootingClip;
 
     private float shootReadyTime = 0f;
 
     public int maxAmo;
     public int currentAmo;
 
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+        currentAmo = maxAmo;
+    }
 
     void Start()
     {
-        currentAmo = maxAmo;
+        //currentAmo = maxAmo;
     }
 
     void Update()
@@ -65,6 +72,7 @@ public class GunShooting : MonoBehaviour
     private void Shoot()
     {
         DecreaseAmo();
+        //audioSource.PlayOneShot(shootingClip);
 
         int bulletDeviation = UnityEngine.Random.Range(-accuracyDeg, accuracyDeg);
         Vector3 spread = new Vector3(0, 0, bulletDeviation);
@@ -109,7 +117,6 @@ public class GunShooting : MonoBehaviour
 
     public void SetAmo(int amo)
     {
-        Debug.Log(amo);
         currentAmo = amo;
     }
 }

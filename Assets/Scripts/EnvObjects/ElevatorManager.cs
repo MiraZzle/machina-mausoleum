@@ -40,4 +40,9 @@ public class ElevatorManager : MonoBehaviour
             }
         }
     }
+
+    public void OpenElevator()
+    {
+        animator.SetTrigger("OpenElevator");
+    }
 }

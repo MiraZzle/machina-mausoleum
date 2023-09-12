@@ -49,6 +49,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2913893921490958995, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+      propertyPath: shootingClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c932c3b7e03b325489e6955c72487d32, type: 3}
+    - target: {fileID: 2913893921490958995, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
       propertyPath: shotsPerFire
       value: 6
       objectReference: {fileID: 0}
@@ -113,6 +117,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5737439222606864353, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+      propertyPath: gunName
+      value: DoubleBarrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5737439222606864353, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
       propertyPath: gunSprite
       value: 
       objectReference: {fileID: 6290438278013100277}
@@ -120,6 +128,10 @@ PrefabInstance:
       propertyPath: gunUISprite
       value: 
       objectReference: {fileID: 1273686646, guid: 6105fb1c664de9240bc3610abcd38db6, type: 3}
+    - target: {fileID: 5737439222606864353, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+      propertyPath: selfReference
+      value: 
+      objectReference: {fileID: 3524950230529047171}
     - target: {fileID: 6953128386287580296, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
       propertyPath: m_Size.x
       value: 0.16
@@ -155,8 +167,112 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 565618106051587838, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2738613282494700180}
   m_SourcePrefab: {fileID: 100100000, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+--- !u!1 &3524950230529047171 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 565618106051587838, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+  m_PrefabInstance: {fileID: 3977339435097691261}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2738613282494700180
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3524950230529047171}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!212 &6290438278013100277 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 6953128386287580296, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}

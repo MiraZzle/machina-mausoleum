@@ -15,7 +15,6 @@ public class WeaponPickup : CratePickup
     void Start()
     {
         containedGun = gunReference;
-        Debug.Log(currentAmo);
     }
 
     void Update()
@@ -29,9 +28,8 @@ public class WeaponPickup : CratePickup
         {
             GameObject gunManager = GameObject.FindGameObjectWithTag("WeaponManager");
             gunManager.GetComponent<PlayerWeaponManager>().AddGun(containedGun);
-            gunManager.GetComponent<PlayerWeaponManager>().SetCurrentAmo(currentAmo);
+            //gunManager.GetComponent<PlayerWeaponManager>().SetCurrentAmo(currentAmo);
 
-            Debug.Log(gunManager.GetComponent<PlayerWeaponManager>());
 
             Destroy(gameObject);
         }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using static UnityEditor.Progress;
 
@@ -12,6 +13,7 @@ public class PlayerWeaponManager : MonoBehaviour
     private int currentGunIndex = 0;
     private int numberOfGuns = 1;
 
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private PlayerMovement player;
 
     [SerializeField] private GameObject weaponManager;
@@ -30,31 +32,55 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public gunPair[] gunPairs;
 
-
+    [SerializeField] private AudioClip shootingClip;
 
     void Start()
     {
-        UpdateGuns();
-        //LevelManager.levelChanged += SaveGuns;
-        PlayerStateTracker.gunInventory.Append("Shotgun");
+        audioSource = GetComponent<AudioSource>();
+        if (LevelManager.currentLevel == 1)
+        {
+            AddFromGunReferences("Pistol");
+            UpdateGuns();
+        }
 
-        LoadGuns();
+        LevelManager.levelChanged += SaveGuns;
+
+
+
+        if (LevelManager.currentLevel != 1)
+        {
+            LoadGuns();
+            UpdateGuns();
+            Debug.Log(PlayerStateTracker.currentGunIndex);
+            SwitchWeapon(PlayerStateTracker.currentGunIndex);
+        }
     }
 
     void Update()
     {
+        ScrollThroughGuns();
+        ManageRolling();
+    }
 
+    private void ScrollThroughGuns()
+    {
         if (Input.GetAxis("Mouse ScrollWheel") < 0)
         {
+            if (gunList.Count > 1)
+            {
+                audioSource.Play();
+            }
             SwitchWeapon(1);
         }
 
         if (Input.GetAxis("Mouse ScrollWheel") > 0)
         {
+            if (gunList.Count > 1)
+            {
+                audioSource.Play();
+            }
             SwitchWeapon(-1);
         }
-
-        ManageRolling();
     }
 
     public GameObject GetCurrentGun()
@@ -127,6 +153,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public void AddGun(GameObject newGun)
     {
+
         GameObject addedGun = Instantiate(newGun, this.transform.position, this.transform.rotation);
         addedGun.transform.parent = weaponManager.transform;
 
@@ -152,22 +179,31 @@ public class PlayerWeaponManager : MonoBehaviour
             UpdateGuns();
         }
     }
+
     
     // nebo singletion class
     // use pair key - prefab! -> tady budes asi muset vyuzit neco jineho nez list nebo array
     public void SaveGuns()
     {
-        foreach (var gun in gunList)
+        UpdateGuns();
+        PlayerStateTracker.gunSafe.Clear();
+        for (int i = 0; i < gunList.Count; i++)
         {
-            PlayerStateTracker.gunInventory.Append(gun.gameObject.name);
+            PlayerStateTracker.SaveGun(
+                gunList[i].GetComponent<GunShooting>().currentAmo, 
+                gunList[i].GetComponent<Gun>().gunName
+                );
         }
+        Debug.Log(currentGunIndex);
+        PlayerStateTracker.currentGunIndex = currentGunIndex;
     }
 
     private void LoadGuns()
     {
-        foreach (var item in PlayerStateTracker.gunInventory)
+        for (int i = 0; i < PlayerStateTracker.gunSafe.Count; i++)
         {
-            AddFromGunReferences(item);
+            AddFromGunReferences(PlayerStateTracker.gunSafe[i].gunName);
+            gunList[i].GetComponent<GunShooting>().currentAmo = PlayerStateTracker.gunSafe[i].ammo;
         }
     }
 

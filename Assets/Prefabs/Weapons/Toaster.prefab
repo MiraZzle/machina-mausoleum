@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 7210192742520383579}
   - component: {fileID: 279365697942162729}
   - component: {fileID: 1838600371379290289}
+  - component: {fileID: -2180046749886964225}
   m_Layer: 7
   m_Name: Toaster
   m_TagString: Untagged
@@ -216,6 +217,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98426c764bc047741998267e1a1d08b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  selfReference: {fileID: 3191293061927606596}
+  gunName: Toaster
   gunSprite: {fileID: 5471525996718834482}
   ownedByPlayer: 1
   gunUISprite: {fileID: 2026150816, guid: 6105fb1c664de9240bc3610abcd38db6, type: 3}
@@ -233,16 +236,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   accuracyDeg: 13
   shotsPerFire: 2
+  audioSource: {fileID: 0}
   firePos: {fileID: 4887308008208362909}
   projectilePrefab: {fileID: 7075452396642639481, guid: a9e80623f158a4c4fb9d6c388bb08e75, type: 3}
   automatic: 0
   canShoot: 0
   reloadTime: 0
+  cooldown: 3
   projectileSpeed: 10
   damage: 8
   fireRate: 0
-  ownedByPlayer: 1
-  cooldown: 3
+  shootingClip: {fileID: 8300000, guid: 6dced437971e2ea4aab6d072f473d8fb, type: 3}
   maxAmo: 50
   currentAmo: 0
 --- !u!114 &1838600371379290289
@@ -258,3 +262,99 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponPickup: {fileID: 5793662653704999004, guid: f5155fcc85d29a44893f923e7677ae8c, type: 3}
+--- !u!82 &-2180046749886964225
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3191293061927606596}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

@@ -5,6 +5,8 @@ using UnityEngine.U2D;
 
 public class Gun : MonoBehaviour
 {
+    public GameObject selfReference;
+    public string gunName;
     [SerializeField] private SpriteRenderer gunSprite;
 
     public bool ownedByPlayer = true;

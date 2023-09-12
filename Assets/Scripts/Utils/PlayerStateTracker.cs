@@ -9,11 +9,12 @@ public static class PlayerStateTracker
 
     public static bool keyObtained = false;
 
-    public static string[] gunInventory;
+    public static List<GunInfo> gunSafe = new List<GunInfo>();
+
+    public static string gunName = "Shotgun";
 
 
     public static int currentGunIndex;
-    public static GameObject currentGun;
 
     public static int enemiesKilled = 0;
 
@@ -26,6 +27,17 @@ public static class PlayerStateTracker
     public static bool playerVulnerable = true;
     public static bool dead = false;
 
+    public struct GunRef
+    {
+        public GameObject gRef;
+    }
+
+    public struct GunInfo
+    {
+        public string gunName;
+        public int ammo;
+    }
+
     static void Start()
     {
         
@@ -33,6 +45,15 @@ public static class PlayerStateTracker
     static void Update()
     {
 
+    }
+
+    public static void SaveGun(int passedAmmo, string passedName)
+    {
+        GunInfo gunI = new GunInfo();
+        gunI.gunName = passedName;
+        gunI.ammo = passedAmmo;
+
+        gunSafe.Add(gunI);
     }
 
     public static void DealDamage(int amount)
