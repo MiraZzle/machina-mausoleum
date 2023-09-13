@@ -5,12 +5,9 @@ using UnityEngine;
 public class WeaponPickup : CratePickup
 {
     [SerializeField] GameObject gunReference;
-    [SerializeField] float throwDistance;
-    [SerializeField] float throwSpeed;
+    private bool canPassAmo = false;
 
     public int currentAmo;
-
-
 
     void Start()
     {
@@ -28,10 +25,20 @@ public class WeaponPickup : CratePickup
         {
             GameObject gunManager = GameObject.FindGameObjectWithTag("WeaponManager");
             gunManager.GetComponent<PlayerWeaponManager>().AddGun(containedGun);
-            //gunManager.GetComponent<PlayerWeaponManager>().SetCurrentAmo(currentAmo);
+
+            if (canPassAmo)
+            {
+                gunManager.GetComponent<PlayerWeaponManager>().SetCurrentAmo(currentAmo);
+            }
 
 
             Destroy(gameObject);
         }
+    }
+
+    public void SetHeldAmo(int amo)
+    {
+        canPassAmo = true;
+        currentAmo = amo;
     }
 }

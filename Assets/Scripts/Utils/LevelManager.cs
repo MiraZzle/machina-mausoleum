@@ -42,6 +42,7 @@ public static class LevelManager
 
     public static void StartGame()
     {
+        levelChanged = null;
         ReloadGame();
         PlayerStateTracker.NullDelegates();
         SceneManager.LoadScene(normalLevelName);
@@ -54,6 +55,7 @@ public static class LevelManager
 
     public static void ReloadGame()
     {
+        levelChanged = null;
         GameStateManager.gamePaused = false;
         Time.timeScale = 1;
         currentLevel = 1;

@@ -36,6 +36,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
     void Start()
     {
+        weaponManager = gameObject;
         audioSource = GetComponent<AudioSource>();
         if (LevelManager.currentLevel == 1)
         {
@@ -90,7 +91,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public void SetCurrentAmo(int amo)
     {
-        currentGun.GetComponent<GunShooting>().SetAmo(amo);
+        currentGun.GetComponent<GunShooting>().currentAmo = amo;
     }
 
     void ManageRolling()
@@ -147,8 +148,8 @@ public class PlayerWeaponManager : MonoBehaviour
 
     private int getNumberOfGuns()
     {
+        weaponManager = gameObject;
         return weaponManager.transform.childCount;
-        
     }
 
     public void AddGun(GameObject newGun)
@@ -156,6 +157,7 @@ public class PlayerWeaponManager : MonoBehaviour
 
         GameObject addedGun = Instantiate(newGun, this.transform.position, this.transform.rotation);
         addedGun.transform.parent = weaponManager.transform;
+        addedGun.GetComponent<GunShooting>().SetOwner(true);
 
 
         if (numberOfGuns < maxGunCount)
@@ -186,6 +188,7 @@ public class PlayerWeaponManager : MonoBehaviour
     public void SaveGuns()
     {
         UpdateGuns();
+        numberOfGuns = getNumberOfGuns();
         PlayerStateTracker.gunSafe.Clear();
         for (int i = 0; i < gunList.Count; i++)
         {
@@ -194,7 +197,6 @@ public class PlayerWeaponManager : MonoBehaviour
                 gunList[i].GetComponent<Gun>().gunName
                 );
         }
-        Debug.Log(currentGunIndex);
         PlayerStateTracker.currentGunIndex = currentGunIndex;
     }
 

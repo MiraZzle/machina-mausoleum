@@ -3204,6 +3204,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_TileModifiers: []
+--- !u!1 &4895059169602375731
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4329170998315716411}
+  - component: {fileID: 3774389472897770024}
+  m_Layer: 0
+  m_Name: ItemSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4329170998315716411
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4895059169602375731}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8646013821207581608}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3774389472897770024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4895059169602375731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f57b3f80e8c3eca4ebe8df849a45ca9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSpawnPoints: []
+  shuffledSpawnPoints: []
+  maxSpawnPoints: 2
+  actualSpawnPoints: 0
 --- !u!1 &4909660865475537210
 GameObject:
   m_ObjectHideFlags: 0
@@ -3355,6 +3403,7 @@ Transform:
   - {fileID: 1771820466552031969}
   - {fileID: 5542214700720473250}
   - {fileID: 8126547290546831195}
+  - {fileID: 4329170998315716411}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2231000497348694070
@@ -3784,11 +3833,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b000c436bbf9b924eb1d1d47af0edee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemSpawners: []
   spawners: []
-  minEnemies: 2
-  maxEnemies: 8
+  shuffledSpawners: []
+  minEnemies: 3
+  maxEnemies: 6
   spawnedEnemies: 0
   roomHandler: {fileID: 5258110070825770245}
+  itemSpawner: {fileID: 4895059169602375731}
 --- !u!1 &6803874596602549001
 GameObject:
   m_ObjectHideFlags: 0
@@ -6832,7 +6884,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1459362300433584554, guid: 2c61168104e675e459b9da6f0246dea5, type: 3}
       propertyPath: m_Name
-      value: SpawnPoint (2)
+      value: SpawnPoint
       objectReference: {fileID: 0}
     - target: {fileID: 2545677980876477262, guid: 2c61168104e675e459b9da6f0246dea5, type: 3}
       propertyPath: m_LocalPosition.x

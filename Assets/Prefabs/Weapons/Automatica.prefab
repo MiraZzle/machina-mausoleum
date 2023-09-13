@@ -247,6 +247,10 @@ MonoBehaviour:
   damage: 1
   fireRate: 12
   shootingClip: {fileID: 8300000, guid: 81800c669e928c54aa3d6d367afe9b4f, type: 3}
+  shootRadius: 1
+  ownedByPlayer: 1
+  damageByPlayer: 1
+  damageByEnemy: 1
   maxAmo: 80
   currentAmo: 30
 --- !u!114 &5869295281446821957

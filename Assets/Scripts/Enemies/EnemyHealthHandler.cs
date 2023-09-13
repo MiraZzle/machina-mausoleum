@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class EnemyHealthHandler : MonoBehaviour
 {
+    [SerializeField] private GameObject itemSpawnPoint;
     [SerializeField] private bool isRanged = true;
     [SerializeField] private AxeSpawner axeSpawner;
     [SerializeField] private int maxHealth = 6;
     [SerializeField] private DamageFlasher flasher;
     private int currentHealth;
-    private bool died = false;
+    private bool deathRegitered = false;
 
     [SerializeField] private EnemyMovement mover;
+    [SerializeField] private ShootingEnemyMovement shootingMover;
 
     void Start()
     {
         mover = GetComponent<EnemyMovement>();
         flasher = GetComponent<DamageFlasher>();
-        //axeSpawner = GetComponent<AxeSpawner>();
 
         currentHealth = maxHealth;
     }
@@ -41,22 +42,30 @@ public class EnemyHealthHandler : MonoBehaviour
                 axeSpawner.DisableAxes();
             }
 
-            if (!died)
+            if (!deathRegitered)
             {
+                InstantiateItemSpawnPoint();
                 PlayerStateTracker.enemiesKilled++;
                 flasher.FlashOnDamage();
-                mover.Die();
+                if (!isRanged)
+                {
+
+                    mover.Die();
+                }
+                else
+                {
+                    shootingMover.Die();
+                }
                 transform.parent.GetComponent<EnemySpawner>().EnemyKilled();
             }
 
-            died = true;
-
-            //Invoke("DestroyOnDeath", 5);
+            deathRegitered = true;
         }
     }
 
-    private void DestroyOnDeath()
+    private void InstantiateItemSpawnPoint()
     {
-        Destroy(gameObject);
+        GameObject spawnPoint = Instantiate(itemSpawnPoint, transform.position, Quaternion.identity);
+        spawnPoint.transform.parent = transform.parent.GetComponent<EnemySpawner>().GetItemSpawner().transform;
     }
 }

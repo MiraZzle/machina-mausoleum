@@ -23,6 +23,6 @@ public class GunPickupSpawner : MonoBehaviour
         Vector3 spawnOffset = (mousePosition - gameObject.transform.position).normalized;
 
         GameObject pickupInst = Instantiate(weaponPickup, gameObject.transform.position + spawnOffset * 6, Quaternion.identity);
-        weaponPickup.GetComponent<WeaponPickup>().currentAmo = amo;
+        pickupInst.GetComponent<WeaponPickup>().SetHeldAmo(amo);
     }
 }

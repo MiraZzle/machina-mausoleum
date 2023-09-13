@@ -5,10 +5,19 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private GameObject explosionParticles;
-    private int projectileDamage;
-    void Update()
+    [SerializeField] private int projectileDamage;
+
+    public enum Initiators
     {
-        
+        player,
+        enemy
+    }
+
+    private Initiators initiator;
+
+    public void SetInitiator(Initiators passedInitiator)
+    {
+        initiator = passedInitiator;
     }
 
     public void SetDamage(int damage)
@@ -18,12 +27,22 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        if (collision.CompareTag("Enemy"))
+        switch (initiator)
         {
-            collision.GetComponent<EnemyHealthHandler>().TakeDamage(projectileDamage);
+            case Initiators.player:
+                if (collision.CompareTag("Enemy"))
+                {
+                    collision.GetComponent<EnemyHealthHandler>().TakeDamage(projectileDamage);
+                }
+                break;
+            case Initiators.enemy:
+                if (collision.CompareTag("Player"))
+                {
+                    PlayerStateTracker.DealDamage(projectileDamage);
+                }
+                break;
         }
-        Destroy(gameObject);
 
+        Destroy(gameObject);
     }
 }

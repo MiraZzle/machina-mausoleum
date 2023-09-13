@@ -11,13 +11,13 @@ GameObject:
   - component: {fileID: 7587300731739337556}
   - component: {fileID: 7911461754581554572}
   - component: {fileID: 6616544164552320843}
-  m_Layer: 12
+  m_Layer: 13
   m_Name: EnemyWeaponHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7587300731739337556
 Transform:
   m_ObjectHideFlags: 0
@@ -40,16 +40,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5194895736475297612}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4dbe8d8899350f4aa0fee42e77922df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   availableGuns:
   - {fileID: 6452737787199462770, guid: c2dcdb59ef5f8cd4ca0fc386625ce10b, type: 3}
-  - {fileID: 301002570867677192, guid: 30ea3b8becffe5241b6d336f3a07c411, type: 3}
+  - {fileID: 373240785242598086, guid: 59c8dd0f8c9a6d84798536a28e566f31, type: 3}
   currentGun: {fileID: 0}
   currentParent: {fileID: 7602424449758061466}
+  detectionRadius: {fileID: 0}
   cooldown: 0
   playerDetected: 0
   reloading: 0
@@ -87,7 +88,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2.25
+  m_Radius: 2
 --- !u!1001 &5295930602505915984
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111,6 +112,14 @@ PrefabInstance:
     - target: {fileID: 4689568546922068215, guid: 3f6390833f879be469bfde745fdba837, type: 3}
       propertyPath: m_Speed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689568546922068215, guid: 3f6390833f879be469bfde745fdba837, type: 3}
+      propertyPath: m_AutoBraking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4689568546922068215, guid: 3f6390833f879be469bfde745fdba837, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 5030410566962402225, guid: 3f6390833f879be469bfde745fdba837, type: 3}
       propertyPath: m_Size.x
@@ -290,6 +299,8 @@ MonoBehaviour:
   animator: {fileID: 1167833195732357254}
   agent: {fileID: 606399826063406759}
   spriteRenderer: {fileID: 3570308609129638401}
+  weaponManager: {fileID: 0}
+  currentState: 0
 --- !u!114 &4569315523006407729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,11 +313,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 544d3d908b016d8499aedcc0458747c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemSpawnPoint: {fileID: 4214574597417685488, guid: 2bdc74f25e8d07842864e2ed1dd29d15, type: 3}
   isRanged: 1
   axeSpawner: {fileID: 0}
   maxHealth: 6
   flasher: {fileID: 1430220438629912284}
   mover: {fileID: 1522809952498960455}
+  shootingMover: {fileID: 1522809952498960455}
 --- !u!114 &1430220438629912284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,3 +354,5 @@ MonoBehaviour:
   animator: {fileID: 1167833195732357254}
   agent: {fileID: 606399826063406759}
   spriteRenderer: {fileID: 3570308609129638401}
+  weaponManager: {fileID: 5194895736475297612}
+  currentState: 0

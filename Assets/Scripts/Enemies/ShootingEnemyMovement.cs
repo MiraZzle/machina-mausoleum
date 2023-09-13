@@ -7,10 +7,7 @@ public class ShootingEnemyMovement : EnemyMovement
     // Start is called before the first frame update
     void Start()
     {
-        animator = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        SetupAgent();
-        currentState = movementStates.moving;
+        base.Start();
     }
 
     void Update()
@@ -18,20 +15,17 @@ public class ShootingEnemyMovement : EnemyMovement
         StateLogic();
     }
 
-    public new void Die()
-    {
-        base.Die();
-        currentState = movementStates.dead;
-    }
-
     protected override void StateLogic()
     {
         switch (currentState)
         {
             case movementStates.moving:
-                agent.SetDestination(playerTarget.position);
-                CheckForSpriteFlip();
-                animator.SetBool("Moving", true);
+                if (!dead)
+                {
+                    agent.SetDestination(playerTarget.position);
+                    CheckForSpriteFlip();
+                    animator.SetBool("Moving", true);
+                }
                 break;
             case movementStates.guarding:
                 break;
@@ -39,6 +33,7 @@ public class ShootingEnemyMovement : EnemyMovement
                 animator.SetBool("Moving", false);
                 break;
             case movementStates.dead:
+                weaponManager.GetComponent<EnemyWeaponManager>().DisableGun();
                 agent.enabled = false;
                 break;
         }

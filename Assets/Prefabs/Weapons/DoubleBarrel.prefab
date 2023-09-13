@@ -49,12 +49,24 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2913893921490958995, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+      propertyPath: shootRadius
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913893921490958995, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
       propertyPath: shootingClip
       value: 
       objectReference: {fileID: 8300000, guid: c932c3b7e03b325489e6955c72487d32, type: 3}
     - target: {fileID: 2913893921490958995, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
       propertyPath: shotsPerFire
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913893921490958995, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+      propertyPath: damageByEnemy
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913893921490958995, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+      propertyPath: damageByPlayer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2913893921490958995, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
       propertyPath: projectileSpeed

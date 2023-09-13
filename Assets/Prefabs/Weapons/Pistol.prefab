@@ -128,9 +128,13 @@ MonoBehaviour:
   reloadTime: 0
   cooldown: 1
   projectileSpeed: 10
-  damage: 2
+  damage: 0
   fireRate: 0
   shootingClip: {fileID: 8300000, guid: 81800c669e928c54aa3d6d367afe9b4f, type: 3}
+  shootRadius: 2
+  ownedByPlayer: 0
+  damageByPlayer: 1
+  damageByEnemy: 1
   maxAmo: 999
   currentAmo: 0
 --- !u!114 &6837061197805742787

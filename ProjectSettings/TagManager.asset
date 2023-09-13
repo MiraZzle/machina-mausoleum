@@ -23,10 +23,10 @@ TagManager:
   - Particle
   - Pickups
   - Enemies
-  - 
-  - 
-  - 
-  - 
+  - DistanceCheckers
+  - Player
+  - EnemyProjectile
+  - PlayerProjectile
   - 
   - 
   - 

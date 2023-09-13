@@ -12,6 +12,7 @@ public class EnemyWeaponManager : MonoBehaviour
     [SerializeField] private GameObject currentParent;
     private ShootingEnemyMovement parentMover;
 
+    [SerializeField] private CircleCollider2D detectionRadius;
     [SerializeField] private float cooldown;
     [SerializeField] private bool playerDetected = false;
     [SerializeField] private bool reloading = false;
@@ -19,6 +20,7 @@ public class EnemyWeaponManager : MonoBehaviour
     private GunShooting shootingScript;
     void Start()
     {
+        detectionRadius = GetComponent<CircleCollider2D>();
         parentMover = currentParent.GetComponent<ShootingEnemyMovement>();
 
         chosenGun = ChooseGun();
@@ -27,14 +29,13 @@ public class EnemyWeaponManager : MonoBehaviour
 
 
         shootingScript = currentGun.GetComponent<GunShooting>();
-        //cooldown = shootingScript.cooldown;
-        //shootingScript.ownedByPlayer = false;
+        cooldown = shootingScript.GetCooldown();
+        SetRadius();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (parentMover.dead)
+        if (parentMover.IsDead())
         {
             currentGun.SetActive(false);
         }
@@ -42,16 +43,30 @@ public class EnemyWeaponManager : MonoBehaviour
         CheckForShooting();
     }
 
+    private void SetRadius()
+    {
+        float radiusPassed = currentGun.GetComponent<GunShooting>().GetRadius();
+        detectionRadius.radius = radiusPassed;
+    }
+
     private void SpawnGun()
     {
         currentGun = Instantiate(chosenGun, transform.position, Quaternion.identity);
         currentGun.transform.parent = transform;
         currentGun.GetComponent<Gun>().ownedByPlayer = false;
+        currentGun.GetComponent<GunShooting>().SetOwner(false);
     }
 
     private GameObject ChooseGun()
     {
         return availableGuns[Random.Range(0, availableGuns.Length)];
+    }
+
+    public void DisableGun()
+    {
+        currentGun.SetActive(false);
+        detectionRadius.enabled = false;
+        reloading = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -60,7 +75,6 @@ public class EnemyWeaponManager : MonoBehaviour
         {
             playerDetected = true;
             parentMover.ChangeState(EnemyMovement.movementStates.attacking);
-            //shootingScript.Shoot();
         }
     }
 
@@ -73,18 +87,20 @@ public class EnemyWeaponManager : MonoBehaviour
         }
     }
 
+    IEnumerator StartCooldown()
+    {
+        reloading = true;
+        yield return new WaitForSecondsRealtime(cooldown);
+
+        reloading = false;
+    }
+
     private void CheckForShooting()
     {
         if (!reloading && playerDetected)
         {
-            //shootingScript.Shoot();
-            reloading = true;
-            Invoke("Reload", cooldown);
+            shootingScript.EnemyShooting();
+            StartCoroutine(StartCooldown());
         }
-    }
-
-    private void Reload()
-    {
-        reloading = false;
     }
 }

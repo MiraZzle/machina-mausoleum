@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7470516708630186218}
   - component: {fileID: 6962087050309176113}
   - component: {fileID: 510306212746470415}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -325,7 +325,7 @@ MonoBehaviour:
     gunRef: {fileID: 373240785242598086, guid: 59c8dd0f8c9a6d84798536a28e566f31, type: 3}
   - gunName: Toaster
     gunRef: {fileID: 3191293061927606596, guid: 7b6b72aeb219a8c4e961c3e16666b373, type: 3}
-  shootingClip: {fileID: 8300000, guid: f73d3ea5b0f5c374c93559991d58e25b, type: 3}
+  shootingClip: {fileID: 8300000, guid: 1bd205611612b6e42bca7f84462640ca, type: 3}
 --- !u!82 &762928746992317781
 AudioSource:
   m_ObjectHideFlags: 0
@@ -336,7 +336,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f73d3ea5b0f5c374c93559991d58e25b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 1bd205611612b6e42bca7f84462640ca, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

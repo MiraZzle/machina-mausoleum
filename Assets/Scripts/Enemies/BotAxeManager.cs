@@ -9,7 +9,7 @@ public class BotAxeManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("Spawned");
+
     }
 
     void Update()

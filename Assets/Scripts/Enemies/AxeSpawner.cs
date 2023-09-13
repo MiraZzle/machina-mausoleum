@@ -26,7 +26,6 @@ public class AxeSpawner : MonoBehaviour
         float rotationalDifference = fullRotationDeg / axeCount;
         for (int i = 0; i < axeCount; i++)
         {
-            Debug.Log(i);
             GameObject axe = Instantiate(axePrefab, transform.position, Quaternion.identity);
             axe.transform.parent = transform;
             axe.transform.rotation = Quaternion.Euler(0, 0, rotationalDifference * i);

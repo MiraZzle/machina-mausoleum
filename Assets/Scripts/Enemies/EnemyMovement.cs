@@ -6,12 +6,15 @@ using UnityEngine.AI;
 public class EnemyMovement : MonoBehaviour
 {
     protected Transform playerTarget;
-    public bool dead = false;
+    //public bool dead = false;
+
+    [SerializeField] protected bool dead = false;
 
     [SerializeField] protected Collider2D physicsCollider;
     [SerializeField] protected Animator animator;
     [SerializeField] protected NavMeshAgent agent;
     [SerializeField] protected SpriteRenderer spriteRenderer;
+    [SerializeField] protected GameObject weaponManager;
 
     public enum movementStates
     {
@@ -21,7 +24,7 @@ public class EnemyMovement : MonoBehaviour
         dead
     }
 
-    protected movementStates currentState;
+    [SerializeField] protected movementStates currentState;
 
     protected void Start()
     {
@@ -52,11 +55,19 @@ public class EnemyMovement : MonoBehaviour
 
     public void Die()
     {
+        HandleDeath();
+    }
+
+    protected void HandleDeath()
+    {
+        dead = true;
         animator.SetTrigger("Died");
+
         physicsCollider.enabled = false;
         agent.enabled = false;
+
+
         ChangeState(movementStates.dead);
-        dead = true;
     }
 
     public void ChangeState(movementStates targetState)
@@ -67,13 +78,21 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
+    public bool IsDead()
+    {
+        return dead;
+    }
+
     protected virtual void StateLogic()
     {
         switch (currentState)
         {
             case movementStates.moving:
-                agent.SetDestination(playerTarget.position);
-                CheckForSpriteFlip();
+                if (!dead)
+                {
+                    CheckForSpriteFlip();
+                    agent.SetDestination(playerTarget.position);
+                }
                 break;
             case movementStates.guarding:
                 break;

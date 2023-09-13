@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1459362300433584554
+--- !u!1 &4214574597417685488
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2545677980876477262}
-  - component: {fileID: 7324759877840892136}
+  - component: {fileID: 3750979600961947473}
+  - component: {fileID: 4193709655695042591}
   m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: ItemSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2545677980876477262
+--- !u!4 &3750979600961947473
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1459362300433584554}
+  m_GameObject: {fileID: 4214574597417685488}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,34 +32,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7324759877840892136
+--- !u!114 &4193709655695042591
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1459362300433584554}
+  m_GameObject: {fileID: 4214574597417685488}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a95d95d9a4deb94cb03941b54f26950, type: 3}
+  m_Script: {fileID: 11500000, guid: bdecd3604d4ea2544a00b15ce55a5130, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  roomObjects:
-  - {fileID: 4855520803684046638, guid: 5021a40fa6fdf1b4294dd81034091f34, type: 3}
-  - {fileID: 4855520803684046638, guid: 5021a40fa6fdf1b4294dd81034091f34, type: 3}
-  - {fileID: 4561710895717947256, guid: 6512a87be07c25545a38aa0456d7c2d7, type: 3}
-  - {fileID: 4561710895717947256, guid: 6512a87be07c25545a38aa0456d7c2d7, type: 3}
+  items:
   - {fileID: 7466592545128443676, guid: cc6baa92752580b43b434bab515e21b2, type: 3}
   - {fileID: 7466592545128443676, guid: cc6baa92752580b43b434bab515e21b2, type: 3}
   - {fileID: 7466592545128443676, guid: cc6baa92752580b43b434bab515e21b2, type: 3}
   - {fileID: 7466592545128443676, guid: cc6baa92752580b43b434bab515e21b2, type: 3}
   - {fileID: 785688071111604668, guid: 79626ad405a56fc40b42d0fca6df0705, type: 3}
+  - {fileID: 4561710895717947256, guid: 6512a87be07c25545a38aa0456d7c2d7, type: 3}
+  - {fileID: 4561710895717947256, guid: 6512a87be07c25545a38aa0456d7c2d7, type: 3}
+  - {fileID: 4855520803684046638, guid: 5021a40fa6fdf1b4294dd81034091f34, type: 3}
+  - {fileID: 4855520803684046638, guid: 5021a40fa6fdf1b4294dd81034091f34, type: 3}
+  - {fileID: 4855520803684046638, guid: 5021a40fa6fdf1b4294dd81034091f34, type: 3}
+  - {fileID: 5673979932648396631, guid: 60a2c2301e6bdce46bd01ca822ca1d1f, type: 3}
+  - {fileID: 906408256912160064, guid: ded36b385f6266a41b949e5592dd9ba8, type: 3}
+  - {fileID: 1085941806924233263, guid: 2f6b4bf7b6bad5241aaa071e59790b83, type: 3}
   - {fileID: 1085941806924233263, guid: 2f6b4bf7b6bad5241aaa071e59790b83, type: 3}
   - {fileID: 7550371450767860925, guid: c2135b1b71944994babe4ddc87b08add, type: 3}
+  - {fileID: 7550371450767860925, guid: c2135b1b71944994babe4ddc87b08add, type: 3}
   - {fileID: 6816998555247905709, guid: c65d16d985f8766479a1bf3ab4cebc9d, type: 3}
-  - {fileID: 906408256912160064, guid: ded36b385f6266a41b949e5592dd9ba8, type: 3}
-  - {fileID: 686928536287962614, guid: f13093b4ca68b504e85b10c05442da6e, type: 3}
-  - {fileID: 5673979932648396631, guid: 60a2c2301e6bdce46bd01ca822ca1d1f, type: 3}
   - {fileID: 5793662653704999004, guid: f5155fcc85d29a44893f923e7677ae8c, type: 3}
-  spawnChance: 50
-  elevatorSpawner: 0
+  - {fileID: 6816998555247905709, guid: c65d16d985f8766479a1bf3ab4cebc9d, type: 3}
+  - {fileID: 686928536287962614, guid: f13093b4ca68b504e85b10c05442da6e, type: 3}
+  - {fileID: 686928536287962614, guid: f13093b4ca68b504e85b10c05442da6e, type: 3}
+  chosenItem: {fileID: 0}
+  spawnPercentage: 60
+  willSpawn: 0

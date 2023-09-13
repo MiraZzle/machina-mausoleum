@@ -62,6 +62,11 @@ public class DungeonRoomManager : MonoBehaviour
 
     }
 
+    public void SpawnItems()
+    {
+        
+    }
+
     public void OpenDoors()
     {
         roomCleaned = true;
