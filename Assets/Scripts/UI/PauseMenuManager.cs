@@ -9,6 +9,7 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] protected bool isPausable = true;
     void Start()
     {
+        // Initially, deactivate the UI button handler
         buttonHandler.SetActive(false);
     }
 
@@ -56,9 +57,7 @@ public class PauseMenuManager : MonoBehaviour
 
     public void GoToMenu()
     {
-        //LevelManager.LoadMenu();
         StartCoroutine(ChangeToMenu());
-        //ChangeToMenu();
     }
 
     IEnumerator ChangeToMenu()
@@ -71,6 +70,5 @@ public class PauseMenuManager : MonoBehaviour
 
         GameStateManager.gamePaused = false;
         Time.timeScale = 1;
-
     }
 }

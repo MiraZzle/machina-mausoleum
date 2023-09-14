@@ -7,15 +7,11 @@ public class HeartPickup : KeyPickup
     [SerializeField] private int minAmmo = 10;
     [SerializeField] private int maxAmmo = 60;
 
+    private int healAmount = 2;
 
-    void Start()
-    {
-
-    }
-
-
+    // Heal player on pickup
     protected override void ActOnPickup()
     {
-        PlayerStateTracker.ChangeHealth(2);
+        PlayerStateTracker.ChangeHealth(healAmount);
     }
 }

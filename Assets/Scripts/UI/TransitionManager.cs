@@ -11,12 +11,6 @@ public class TransitionManager : MonoBehaviour
         FadeOut();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void FadeIn()
     {
         animator.SetTrigger("FadeIN");

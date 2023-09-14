@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    [SerializeField] private float SmoothSpeed = 0.1f;
+
     private Transform player;
 
+    // Offset between the camera and the player
     private Vector3 Offset = new Vector3(0, 0, -20);
-    [SerializeField] private float SmoothSpeed = 0.1f;
     private Vector3 velocity = Vector3.zero;
 
     private void Start()
@@ -16,12 +18,13 @@ public class CameraController : MonoBehaviour
         transform.position = player.position;
     }
 
-    void Update()
+    private void FixedUpdate()
     {
-        //transform.position = new Vector3(player.position.x, player.position.y, transform.position.z);
+        MoveCamera();
     }
 
-    private void FixedUpdate()
+    // Calculate the desired camera position nad smoothly move it
+    private void MoveCamera()
     {
         Vector3 desiredPosition = player.position + Offset;
         Vector3 smoothedPosition =

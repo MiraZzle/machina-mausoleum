@@ -5,22 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class ElevatorManager : MonoBehaviour
 {
-    public bool elevatorEntry = false;
-
-    public bool elevatorActivated = false;
-    public bool playerDetected = false;
-
     [SerializeField] private Animator animator;
 
-    void Start()
-    {
-        
-    }
+    // Flag to track if the elevator is an entrance
+    public bool elevatorEntry = false;
 
-    void Update()
-    {
-        
-    }
+    // Flag to track if the elevator is activated
+    public bool elevatorActivated = false;
+    public bool playerDetected = false;
 
     public void SetState(bool isEntrance)
     {
@@ -35,6 +27,7 @@ public class ElevatorManager : MonoBehaviour
             if (!elevatorEntry)
             {
                 animator.SetBool("unlocked", true);
+                // Consume the key in PlayerStateTracker
                 PlayerStateTracker.keyObtained = false;
                 LevelManager.LoadLevel();
             }

@@ -6,15 +6,18 @@ public class DoorManager : MonoBehaviour
 {
     [SerializeField] private Animator animator;
 
+    // Flag to track if the room is cleared - all enemies are dead
     public bool roomCleared = false;
+
+    // Flag to track if the room was entered by player
     public bool roomEntered = false;
 
-    void Start()
+    void Update()
     {
-        
+        HandleAnimations();
     }
 
-    void Update()
+    private void HandleAnimations()
     {
         if (roomCleared)
         {

@@ -6,31 +6,36 @@ using UnityEngine;
 public class EnemyWeaponManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] availableGuns;
-    private GameObject chosenGun;
     [SerializeField] private GameObject currentGun;
-
     [SerializeField] private GameObject currentParent;
-    private ShootingEnemyMovement parentMover;
 
+    // Radius for detecting player and triggering gun shot
     [SerializeField] private CircleCollider2D detectionRadius;
+
+    // The cooldown time between shots
     [SerializeField] private float cooldown;
     [SerializeField] private bool playerDetected = false;
     [SerializeField] private bool reloading = true;
+
+    // Time to prepare for shooting - used during start to not instantly shoot at player
     [SerializeField] private float prepareTime = 1f;
 
+    private ShootingEnemyMovement parentMover;
+    private GameObject chosenGun;
     private GunShooting shootingScript;
     void Start()
     {
         detectionRadius = GetComponent<CircleCollider2D>();
         parentMover = currentParent.GetComponent<ShootingEnemyMovement>();
 
+        // Spawn and equip the chosen gun
         chosenGun = ChooseGun();
-
         SpawnGun();
-
 
         shootingScript = currentGun.GetComponent<GunShooting>();
         cooldown = shootingScript.GetCooldown();
+
+        // Set the detection radius based on the gun's range
         SetRadius();
 
         StartCoroutine(ChargeOnStart());
@@ -38,6 +43,7 @@ public class EnemyWeaponManager : MonoBehaviour
 
     void Update()
     {
+        // Deactivate the gun when the parent (ranged enemy) is dead
         if (parentMover.IsDead())
         {
             currentGun.SetActive(false);
@@ -52,6 +58,7 @@ public class EnemyWeaponManager : MonoBehaviour
         detectionRadius.radius = radiusPassed;
     }
 
+    // Start the reloading process after being spawned
     IEnumerator ChargeOnStart()
     {
         reloading = true;
@@ -85,6 +92,7 @@ public class EnemyWeaponManager : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            // Player detected, start attacking
             playerDetected = true;
             parentMover.ChangeState(EnemyMovement.movementStates.attacking);
         }

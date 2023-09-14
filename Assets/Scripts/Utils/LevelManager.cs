@@ -5,14 +5,14 @@ using UnityEngine.SceneManagement;
 
 public static class LevelManager
 {
-    public static int currentLevel = 1;
-
-    public delegate void LevelChanged();
-    public static LevelChanged levelChanged;
-
     private static string menuName = "MainMenu";
     private static string normalLevelName = "GunRange";
     private static string optionsMenuName = "OptionsMenu";
+    public static int currentLevel = 1;
+
+    // Event delegate to notify when the level changes
+    public delegate void LevelChanged();
+    public static LevelChanged levelChanged;
 
     public static void LoadLevel()
     {

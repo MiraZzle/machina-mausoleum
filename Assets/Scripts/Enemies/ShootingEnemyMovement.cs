@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class ShootingEnemyMovement : EnemyMovement
 {
-    void Start()
-    {
-        base.Start();
-    }
-
     void Update()
     {
         StateLogic();
     }
 
+    // Override the StateLogic method from the base class
     protected override void StateLogic()
     {
         switch (currentState)

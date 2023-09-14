@@ -6,10 +6,8 @@ public class SoundManager : MonoBehaviour
 {
     [SerializeField] private AudioClip audioClip;
     [SerializeField] private AudioSource audioSource;
-
     [SerializeField] private bool themePlayer = false;
     [SerializeField] private bool effectPlayer = false;
-
 
     void Start()
     {

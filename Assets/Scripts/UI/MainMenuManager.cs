@@ -5,21 +5,11 @@ using UnityEngine;
 public class MainMenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject transitionManager;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // Start the game when the StartBbutton is pressed
     public void StartGame()
     {
         StartCoroutine(TransitionToGame());
-        //LevelManager.StartGame();
     }
 
     public void EnterSettings()
@@ -32,6 +22,7 @@ public class MainMenuManager : MonoBehaviour
         LevelManager.ExitGame();
     }
 
+    // Perform a transition to start the game
     IEnumerator TransitionToGame()
     {
         transitionManager.GetComponent<TransitionManager>().FadeIn();

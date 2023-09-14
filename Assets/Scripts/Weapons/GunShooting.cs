@@ -24,6 +24,7 @@ public class GunShooting : MonoBehaviour
     [SerializeField] private int damage;
     [SerializeField] private float fireRate;
     [SerializeField] private AudioClip shootingClip;
+    // Radius for Player detection when gun is owned by enemy
     [SerializeField] private float shootRadius;
 
     [SerializeField] private bool ownedByPlayer = true;
@@ -49,11 +50,11 @@ public class GunShooting : MonoBehaviour
         }
         else
         {
+            // Worsen accuracy for enemies
             accuracyDeg *= accuracyEnemyMultiplier;
             damage = damageByEnemy;
         }
     }
-
     void Update()
     {
         if (!GameStateManager.gamePaused)
@@ -63,7 +64,6 @@ public class GunShooting : MonoBehaviour
                 CheckIfShooting();
             }
         }
-
         currentAmo = math.clamp(currentAmo, 0, maxAmo);
     }
 
@@ -107,7 +107,7 @@ public class GunShooting : MonoBehaviour
         {
             PlaySound();
         }
-
+        // Randomize bullet deviation within accuracy
         float bulletDeviation = UnityEngine.Random.Range(-accuracyDeg, accuracyDeg);
         Vector3 spread = new Vector3(0, 0, bulletDeviation);
 
@@ -120,10 +120,12 @@ public class GunShooting : MonoBehaviour
 
         projectileScript.SetInitiator(initiator);
 
+        // Add force to the projectile to make it move
         rb.AddForce(projectile.transform.right * projectileSpeed, ForceMode2D.Impulse);
 
         if (firePos.position.x < transform.position.x)
         {
+            // Flip the projectile sprite if fired to the left
             SpriteRenderer projectileSprite = projectile.GetComponent<SpriteRenderer>();
             projectileSprite.flipY = true;
         }
@@ -133,7 +135,6 @@ public class GunShooting : MonoBehaviour
     {
         soundManager.PlayEffect(shootingClip);
     }
-
     public void EnemyShooting()
     {
         int enemyProjectileLayer = LayerMask.NameToLayer("EnemyProjectile");

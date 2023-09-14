@@ -5,17 +5,8 @@ using UnityEngine;
 public class GunPickupSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject weaponPickup;
-    void Start()
-    {
-        
-    }
 
-    void Update()
-    {
-        
-    }
-
-
+    // Spawns a weapon pickup with a specified amount of ammo
     public void SpawnPickup(int amo)
     {
         Vector3 mousePosition = Input.mousePosition;

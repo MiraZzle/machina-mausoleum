@@ -5,120 +5,112 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private PlayerSFXManager SFXManager;
-
-
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer sprite;
 
+    private Vector2 velocity = Vector2.zero;
 
-    public float dashCoolCounter = 0f;
-    public float dashCounter = 0f;
+    // Directional input from the player
+    private Vector2 movementDirections;
+
     public float dashDuration = 0.8f;
-    public float dashCooldown = 3f;
+    public float dashCooldown = 1.2f;
+
+    // Speed during dash
+    public float dashSpeed = 7f;
+
+    // Regular movement speed
+    public float speed = 4f;
 
     public bool rolling = false;
 
-
-    public float dashSpeed = 7f;
-    public float speed = 4f;
-
+    // Current movement speed
     private float currentSpeed;
 
-    private Vector2 velocity = Vector2.zero;
-    private Vector2 movementDirections;
+    private bool canDash = true;
 
     void Start()
     {
         SFXManager = GetComponent<PlayerSFXManager>();
         currentSpeed = speed;
+        // Subscribe to the playerDied event
         PlayerStateTracker.playerDied += PlayOnDeath;
     }
     
     void Update()
     {
-        GetDirectionalInput();
-        HandleAnimation();
-
-
-        velocity = movementDirections.normalized * currentSpeed;
-
         if (!GameStateManager.gamePaused)
         {
+            GetDirectionalInput();
+            HandleAnimation();
             FlipToMouse();
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (dashCoolCounter <= 0 && dashCounter <= 0)
-                {
-                    Dash();
-                }
-            }
-
             ManageDash();
         }
     }
 
     private void FixedUpdate()
     {
-        Move();
+        if (!GameStateManager.gamePaused)
+        {
+            HandleMovement();
+        }
     }
 
+    private void HandleMovement()
+    {
+        // Calculate the velocity based on input and current speed
+        velocity = movementDirections.normalized * currentSpeed;
+        rb.velocity = velocity;
+    }
+
+    // Get horizontal and vertical input from the player
     private void GetDirectionalInput()
     {
         movementDirections.x = Input.GetAxisRaw("Horizontal");
         movementDirections.y = Input.GetAxisRaw("Vertical");
     }
 
-    private void Move()
+    private IEnumerator Dash()
     {
-        rb.velocity = velocity;
-    }
-
-    private void Dash()
-    {
+        // Start dashing animation and disable vulnerability during dash
+        rolling = true;
         PlayerStateTracker.playerVulnerable = false;
         SFXManager.PlayRollSFX();
         animator.SetBool("dashing", true);
-
         currentSpeed = dashSpeed;
-        dashCounter = dashDuration;
-        rolling = true;
+
+        // Wait for the dash duration
+        yield return new WaitForSeconds(dashDuration);
+
+        // Enable vulnerability after the dash, stop dashing animation, and reset speed
+        PlayerStateTracker.playerVulnerable = true;
+        rolling = false;
+        animator.SetBool("dashing", false);
+        currentSpeed = speed;
+
+        // Start dash cooldown
+        StartCoroutine(DashCooldown());
     }
 
+    private IEnumerator DashCooldown()
+    {
+        canDash = false;
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+    }
     private void ManageDash()
     {
-        if (dashCounter > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
-            dashCounter -= Time.deltaTime;
-
-            if (dashCounter <= 0)
-            {
-                currentSpeed = speed;
-                dashCoolCounter = dashCooldown;
-
-                animator.SetBool("dashing", false);
-                rolling = false;
-                PlayerStateTracker.playerVulnerable = true;
-            }
-        }
-
-        if (dashCoolCounter > 0)
-        {
-            dashCoolCounter -= Time.deltaTime;
+            StartCoroutine(Dash());
         }
     }
 
+    // Manage player animations based on movement
     private void HandleAnimation()
     {
-        if (velocity == Vector2.zero)
-        {
-            animator.SetBool("running", false);
-        }
-        else
-        {
-            animator.SetBool("running", true);
-        }
+        animator.SetBool("running", velocity != Vector2.zero);
     }
 
     private void FlipToMouse()
@@ -126,16 +118,11 @@ public class PlayerMovement : MonoBehaviour
         Vector3 mousePosition = Input.mousePosition;
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-        if (mousePosition.x > transform.position.x)
-        {
-            sprite.flipX = false;
-        }
-        else
-        {
-            sprite.flipX = true;
-        }
+        // Flip the sprite if the mouse is to the left of the player
+        sprite.flipX = mousePosition.x < transform.position.x;
     }
 
+    // Handle actions to be taken when the player dies
     private void PlayOnDeath()
     {
         SFXManager.PlayGameOver();

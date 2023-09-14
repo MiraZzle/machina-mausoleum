@@ -6,27 +6,24 @@ public static class PlayerStateTracker
 {
     public static int maxHealth = 8;
     public static int currentHealth = maxHealth;
-
     public static bool keyObtained = false;
-
     public static List<GunInfo> gunSafe = new List<GunInfo>();
-
     public static string gunName = "Shotgun";
-
-
     public static int currentGunIndex;
-
     public static int enemiesKilled = 0;
 
+    // Delegate to handle damage taken by the player.
     public delegate void OnDamageTaken();
     public static OnDamageTaken onDamageTaken;
 
+    // Delegate to handle the player's death.
     public delegate void PlayerDied();
     public static PlayerDied playerDied;
 
     public static bool playerVulnerable = true;
     public static bool dead = false;
 
+    // Struct to hold a reference to a gun GameObject
     public struct GunRef
     {
         public GameObject gRef;
@@ -36,15 +33,6 @@ public static class PlayerStateTracker
     {
         public string gunName;
         public int ammo;
-    }
-
-    static void Start()
-    {
-        
-    }
-    static void Update()
-    {
-
     }
 
     public static void SaveGun(int passedAmmo, string passedName)

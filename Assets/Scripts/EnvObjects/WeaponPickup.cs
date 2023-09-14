@@ -7,6 +7,7 @@ public class WeaponPickup : CratePickup
     [SerializeField] GameObject gunReference;
     private bool canPassAmo = false;
 
+    // The current amount of ammo associated with this weapon
     public int currentAmo;
 
     void Start()
@@ -24,10 +25,12 @@ public class WeaponPickup : CratePickup
         if (playerColliding && Input.GetKeyDown(KeyCode.E))
         {
             GameObject gunManager = GameObject.FindGameObjectWithTag("WeaponManager");
+            // Add the containedGun to the player's weapon manager.
             gunManager.GetComponent<PlayerWeaponManager>().AddGun(containedGun);
 
             if (canPassAmo)
             {
+                // Set the current ammo amount for the added weapon
                 gunManager.GetComponent<PlayerWeaponManager>().SetCurrentAmo(currentAmo);
             }
 
@@ -37,6 +40,7 @@ public class WeaponPickup : CratePickup
         }
     }
 
+    // Set information based on already used gun
     public void SetHeldAmo(int amo)
     {
         canPassAmo = true;

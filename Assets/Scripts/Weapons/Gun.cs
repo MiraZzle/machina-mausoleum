@@ -5,16 +5,14 @@ using UnityEngine.U2D;
 
 public class Gun : MonoBehaviour
 {
-    public GameObject selfReference;
-    public string gunName;
     [SerializeField] private SpriteRenderer gunSprite;
-
-    public bool ownedByPlayer = true;
-
-    public Sprite gunUISprite;
-
     private GameObject player;
     private Vector3 mousePosition;
+
+    public GameObject selfReference;
+    public string gunName;
+    public bool ownedByPlayer = true;
+    public Sprite gunUISprite;
 
     void Start()
     {
@@ -53,6 +51,7 @@ public class Gun : MonoBehaviour
 
         transform.rotation = rot;
 
+        // Flip the gun sprite if the target is on the left side of the gun.
 
         if (target.x > transform.position.x)
         {

@@ -12,17 +12,14 @@ public class HealthUIManager : MonoBehaviour
     {
         maxHealth = PlayerStateTracker.maxHealth;
         ClearHearts();
+        // Create heart UI elements based on the player's maximum health
         RedrawHearts();
         UpdateHearts();
+        // Subscribe to the event for damage taken
         PlayerStateTracker.onDamageTaken += UpdateHearts;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        CheckDamage();
-    }
-
+    // For testing purposes, check for manual damage input
     private void CheckDamage()
     {
         if (Input.GetKeyDown(KeyCode.K))
@@ -34,6 +31,7 @@ public class HealthUIManager : MonoBehaviour
     public void RedrawHearts()
     {
         ClearHearts();
+        // Calculate the number of hearts needed
         int heartCount = (maxHealth / 2) + (maxHealth % 2);
 
         for (int i = 0; i < heartCount; i++)
@@ -46,6 +44,7 @@ public class HealthUIManager : MonoBehaviour
     {
         for (int i = 0; i < hearts.Count; i++)
         {
+            // Calculate the filling state of each heart based on the player's current health
             int heartFilling = (int)Mathf.Clamp(PlayerStateTracker.currentHealth - (i * 2), 0, 2);
 
             hearts[i].SetState((HeartUI.heartStates)heartFilling);

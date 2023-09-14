@@ -9,9 +9,7 @@ public class KeyUIComp : MonoBehaviour
     {
         spriteRenderer = this.GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = false;
-
     }
-
     void Update()
     {
         if (PlayerStateTracker.keyObtained)

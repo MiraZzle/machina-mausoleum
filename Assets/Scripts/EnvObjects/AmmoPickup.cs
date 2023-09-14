@@ -10,14 +10,14 @@ public class AmmoPickup : KeyPickup
     private int ammoHeld; 
 
     [SerializeField] GameObject weaponManager;
-    void Start()
+    void Awake()
     {
         weaponManager = GameObject.FindGameObjectWithTag("WeaponManager");
+        // Set random amount of held ammo
         ammoHeld = Random.Range(minAmmo, maxAmmo);
-
     }
 
-
+    // Find PlayerWeaponManager and increment held ammo
     protected override void ActOnPickup()
     {
         weaponManager.GetComponent<PlayerWeaponManager>().GetCurrentGun().GetComponent<GunShooting>().AddAmmo(ammoHeld);

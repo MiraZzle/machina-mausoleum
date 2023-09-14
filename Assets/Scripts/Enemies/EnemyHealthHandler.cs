@@ -4,16 +4,26 @@ using UnityEngine;
 
 public class EnemyHealthHandler : MonoBehaviour
 {
+    // Reference to the EnemyMovement script for melee enemies.
+    [SerializeField] private EnemyMovement mover;
+
+    // Reference to the EnemyMovement script for ranged enemies.
+    [SerializeField] private ShootingEnemyMovement shootingMover;
+    [SerializeField] private DamageFlasher flasher;
+
+    // Reference to the AxeSpawner for disabling axes
+    [SerializeField] private AxeSpawner axeSpawner;
+
+    // The item spawn point associated with this enemy - used for "drop"
     [SerializeField] private GameObject itemSpawnPoint;
     [SerializeField] private bool isRanged = true;
-    [SerializeField] private AxeSpawner axeSpawner;
     [SerializeField] private int maxHealth = 6;
-    [SerializeField] private DamageFlasher flasher;
-    private int currentHealth;
-    private bool deathRegitered = false;
 
-    [SerializeField] private EnemyMovement mover;
-    [SerializeField] private ShootingEnemyMovement shootingMover;
+    private int currentHealth;
+
+    // Flag to prevent multiple death registrations
+    private bool deathRegistered = false;
+
 
     void Start()
     {
@@ -23,16 +33,13 @@ public class EnemyHealthHandler : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    void Update()
-    {
-        
-    }
-
     public void TakeDamage(int damage)
     {
         if (currentHealth >= 0)
         {
             currentHealth -= damage;
+
+            // Flash to indicate taking damage
             flasher.FlashOnDamage();
         }
         else
@@ -42,14 +49,15 @@ public class EnemyHealthHandler : MonoBehaviour
                 axeSpawner.DisableAxes();
             }
 
-            if (!deathRegitered)
+            if (!deathRegistered)
             {
-                InstantiateItemSpawnPoint();
+                // Spawn an item spawn point at the enemy's position
+                InstantiateItemSpawnPoint(); 
                 PlayerStateTracker.enemiesKilled++;
                 flasher.FlashOnDamage();
                 if (!isRanged)
                 {
-
+                    // Trigger death animation and behavior for melee enemies
                     mover.Die();
                 }
                 else
@@ -58,8 +66,8 @@ public class EnemyHealthHandler : MonoBehaviour
                 }
                 transform.parent.GetComponent<EnemySpawner>().EnemyKilled();
             }
-
-            deathRegitered = true;
+            // Mark death as registered to prevent multiple registrations
+            deathRegistered = true;
         }
     }
 

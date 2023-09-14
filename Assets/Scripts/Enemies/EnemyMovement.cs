@@ -5,16 +5,15 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    protected Transform playerTarget;
-    //public bool dead = false;
-
-    [SerializeField] protected bool dead = false;
-
     [SerializeField] protected Collider2D physicsCollider;
     [SerializeField] protected Animator animator;
     [SerializeField] protected NavMeshAgent agent;
     [SerializeField] protected SpriteRenderer spriteRenderer;
     [SerializeField] protected GameObject weaponManager;
+
+    [SerializeField] protected bool dead = false;
+
+    protected Transform playerTarget;
 
     public enum movementStates
     {
@@ -24,21 +23,24 @@ public class EnemyMovement : MonoBehaviour
         dead
     }
 
+    // The current movement state of the enemy
     [SerializeField] protected movementStates currentState;
 
     protected void Start()
     {
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        // Initialize the NavMeshAgent and other setup
         SetupAgent();
         currentState = movementStates.moving;
     }
 
     protected void Update()
     {
+        // Handle the logic based on current state
         StateLogic();
     }
-
     protected void SetupAgent()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -48,11 +50,13 @@ public class EnemyMovement : MonoBehaviour
         playerTarget = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
+    // Flip sprite relative to movement x direction
     protected void CheckForSpriteFlip()
     {
         spriteRenderer.flipX = !(agent.desiredVelocity.x > 0);
     }
 
+    // Flip sprite relative to player position
     protected void CheckForSpriteFlipIdle()
     {
         spriteRenderer.flipX = !(playerTarget.transform.position.x > transform.position.x);
@@ -63,6 +67,7 @@ public class EnemyMovement : MonoBehaviour
         HandleDeath();
     }
 
+    // Disable physics related components and change state to dead
     protected void HandleDeath()
     {
         dead = true;
@@ -88,6 +93,7 @@ public class EnemyMovement : MonoBehaviour
         return dead;
     }
 
+    // Handle state-specific logic
     protected virtual void StateLogic()
     {
         switch (currentState)

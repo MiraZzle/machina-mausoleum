@@ -6,10 +6,7 @@ public class KeyPickup : MonoBehaviour
 {
     protected GameObject playerRef;
     private bool playerColliding = false;
-    void Start()
-    {
-        
-    }
+
     void Update()
     {
         CheckForPickup();
@@ -20,6 +17,7 @@ public class KeyPickup : MonoBehaviour
         PlayerStateTracker.keyObtained = true;
     }
 
+    // Check for player input to pick up the key (E)
     protected void CheckForPickup()
     {
         if (playerColliding && Input.GetKeyDown(KeyCode.E))
@@ -36,6 +34,7 @@ public class KeyPickup : MonoBehaviour
         playerRef.GetComponent<PlayerSFXManager>().PlayPickupSFX();
     }
 
+    // Detect when the player enters the trigger zone of the key pickup
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -44,6 +43,7 @@ public class KeyPickup : MonoBehaviour
         }
     }
 
+    // Detect when the player exits the trigger zone of the key pickup.
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")

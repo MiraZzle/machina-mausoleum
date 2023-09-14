@@ -8,5 +8,4 @@ public static class OptionManager
     public static float transitionTime = 0.4f;
     public static bool musicEnabled = true;
     public static bool SFXEnabled = true;
-
 }

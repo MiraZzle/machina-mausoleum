@@ -9,6 +9,7 @@ public class DeathMenuManager : PauseMenuManager
     [SerializeField] private GameObject captionDisplayer;
     [SerializeField] private GameObject scoreDisplayer;
 
+    // List of death captions displayed randomly when the player dies
     public List<string> deathCaptions = new List<string> { 
         "Time to wind down, adventurer.",
         "Toast is burnt, and so is your luck.",
@@ -17,18 +18,16 @@ public class DeathMenuManager : PauseMenuManager
         "Your adventure has run out of steam.",
         "You've been served a steaming defeat."
     };
+
+    private char quoteChar = '"';
     void Start()
     {
         buttonHandler.SetActive(false);
+        // Subscribe to the playerDied event to display the death menu
         PlayerStateTracker.playerDied += DisplayMenu;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    // Randomly choose a death caption from the list
     private string ChooseCaption()
     {
         return deathCaptions[Random.Range(0, deathCaptions.Count)];
@@ -36,9 +35,11 @@ public class DeathMenuManager : PauseMenuManager
 
     public void DisplayMenu()
     {
-        string caption = '"' + ChooseCaption().ToUpper() + '"';
+        // Format the chosen caption for display
+        string caption = quoteChar + ChooseCaption().ToUpper() + quoteChar;
         buttonHandler.SetActive(true);
 
+        // Display the player's score (number of enemies killed)
         captionDisplayer.GetComponent<TextMeshProUGUI>().text = caption;
         scoreDisplayer.GetComponent<TextMeshProUGUI>().text =
             "Score: " + PlayerStateTracker.enemiesKilled.ToString();
@@ -49,7 +50,6 @@ public class DeathMenuManager : PauseMenuManager
     public void RestartGame()
     {
         StartCoroutine(ReloadGame());
-        //ReloadGame();
     }
 
     IEnumerator ReloadGame()

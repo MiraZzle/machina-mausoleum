@@ -4,29 +4,30 @@ using UnityEngine;
 
 public class CratePickup : MonoBehaviour
 {
-    protected GameObject containedGun;
-    protected GameObject containedPickup;
+    [SerializeField] private List<GameObject> gunList = new List<GameObject>();
 
-    protected GameObject playerRef;
+    // List of possible gun drops in crate
+    [SerializeField] private List<GameObject> gunDropList = new List<GameObject>();
     [SerializeField] private SpriteRenderer spriteRen;
 
-    [SerializeField] private Sprite unActiveS;
-    [SerializeField] private Sprite ActiveS;
+    // Gun prefab to pass
+    protected GameObject containedGun;
 
-    [SerializeField] private List<GameObject> gunList = new List<GameObject>();
-    [SerializeField] private List<GameObject> gunDropList = new List<GameObject>();
-
-
+    // Pickup contained in crate
+    protected GameObject containedPickup;
+    protected GameObject playerRef;
 
     private int listSize;
-
     public bool playerColliding = false;
 
     void Start()
     {
         listSize = gunList.Count;
 
+        // Get a random gun to be contained in the crate - used for WeaponPickup inheritance
         containedGun = GetContainedGun();
+
+        // Get a random pickup item to drop when the crate is opened
         containedPickup = GetDropContained();
     }
 
@@ -35,6 +36,7 @@ public class CratePickup : MonoBehaviour
         CheckForSpawnPickup();
     }
 
+    // Randomly select a gun from the gun list
     private GameObject GetContainedGun()
     {
         int randomIndex = Random.Range(0, listSize);
@@ -42,6 +44,7 @@ public class CratePickup : MonoBehaviour
         return gunList[randomIndex];
     }
 
+    // Randomly select a pickup item from the drop list
     private GameObject GetDropContained()
     {
         int randomIndex = Random.Range(0, listSize);
@@ -55,9 +58,9 @@ public class CratePickup : MonoBehaviour
         playerRef.GetComponent<PlayerSFXManager>().PlayPickupSFX();
     }
 
+    // Spawn the contained pickup item at the crate's position and destroy the crate
     private void CheckForSpawnPickup()
     {
-
         if (playerColliding && Input.GetKeyDown(KeyCode.E))
         {
             GameObject gunPickup = Instantiate(containedPickup, transform.position, Quaternion.identity);
@@ -81,6 +84,4 @@ public class CratePickup : MonoBehaviour
             playerColliding = false;
         }
     }
-
-
 }

@@ -6,23 +6,22 @@ using UnityEngine;
 public class AxeSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject axePrefab;
-    [SerializeField] private int rotationalSpeed;
+
+    // List to store spawned axes
+    [SerializeField] private List<GameObject> axeList = new List<GameObject>();
     [SerializeField] private int axeCount = 4;
 
-    [SerializeField] private List<GameObject> axeList = new List<GameObject>();
+    // Full rotation in degrees
     [SerializeField] private int fullRotationDeg = 360;
     void Start()
     {
         SpawnAxes();
     }
 
-    void Update()
-    {
-        
-    }
-
+    // Spawn axe and calculate rotational differences between each of them
     private void SpawnAxes()
     {
+        // Calculate the rotational difference between each axe
         float rotationalDifference = fullRotationDeg / axeCount;
         for (int i = 0; i < axeCount; i++)
         {
@@ -35,7 +34,6 @@ public class AxeSpawner : MonoBehaviour
 
     public void DisableAxes()
     {
-
         foreach (GameObject axe in axeList)
         {
             axe.SetActive(false);

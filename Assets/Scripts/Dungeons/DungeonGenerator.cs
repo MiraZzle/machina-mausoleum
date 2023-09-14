@@ -8,33 +8,44 @@ public class DungeonGenerator : MonoBehaviour
 {
     [SerializeField] private GameObject roomPrefab;
 
-    [SerializeField] private int roomMapSize = 20;
+    // Number of rooms that make up the boundaries of the map
     [SerializeField] private int mapBoundaries = 15;
-
+    [SerializeField] private int keyRoomFromLast = 3;
     [SerializeField] private int minRooms;
     [SerializeField] private int maxRooms;
 
+    // 2D array to store references to generated rooms
     private RoomReference[,] roomsToGenerate;
 
+    // List to hold references to all generated rooms
     private List<RoomReference> roomHolder = new List<RoomReference>();
+
+    // Queue for BFS of room generation
     private Queue<RoomReference> roomsQueue = new Queue<RoomReference>();
+
+    // Size of each room in the map - actual size in editor
+    [SerializeField] private int roomMapSize = 20;
 
     private int maxRoomCount;
     private int roomCount = 0;
 
+    // Offset for spawning rooms
     private int spawnOffset;
 
+    // Definition of a room reference class
     private class RoomReference
     {
         private const int sideCount = 4;
         private Vector2[] roomDirs = new Vector2[sideCount] { Vector2.up, Vector2.right, Vector2.down, Vector2.left };
 
-
+        // Store the direction from the parent room to this room
         public Vector2 parentDir;
         public Vector2 posInArray;
 
+        // An array to track which sides of this room are active or connected to other rooms
         public bool[] activeSides = new bool[sideCount];
 
+        // A dictionary to mark the status of each side (true if connected, false if not)
         public Dictionary<Vector2, bool> sideMarker = new Dictionary<Vector2, bool>() {
             { Vector2.up, false },
             { Vector2.right, false },
@@ -45,14 +56,12 @@ public class DungeonGenerator : MonoBehaviour
         public bool generatedChildren = false;
         public bool isGenerated = false;
 
-        public bool isKeyRoom = false;
-        public bool isStarting = false;
-        public bool isExit = false;
-
         private int neighbourRoomCount = 3;
         private int minNeighbouringRooms = 2;
 
         public roomTypes roomType;
+
+        // Enum to define the possible types of rooms
         public enum roomTypes {
             normal,
             key,
@@ -60,19 +69,18 @@ public class DungeonGenerator : MonoBehaviour
             exit
         }
 
+        // Determine the number of neighboring rooms based on the room type
         public Vector2[] getNeihbourRooms()
         {
-
-            if (isStarting)
+            if (roomType == roomTypes.spawn)
             {
-
                 return generateNeighbours(minNeighbouringRooms, sideCount);
             }
 
             return generateNeighbours(minNeighbouringRooms, neighbourRoomCount);
-
         }
 
+        // Generate an array of neighboring rooms' directions based on specified counts
         private Vector2[] generateNeighbours(int maxNeigbours, int minNeighbours)
         {
             int neighbourCount = Random.Range(minNeighbours, maxNeigbours);
@@ -95,67 +103,59 @@ public class DungeonGenerator : MonoBehaviour
             return randomRooms;
         }
     }
-
     void Start()
     {
         roomsToGenerate = new RoomReference[mapBoundaries, mapBoundaries];
         maxRoomCount = Random.Range(minRooms, maxRooms);
 
         GenerateMap();
-        testRooms();
+        InstantiateRooms();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            LevelManager.LoadLevel();
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-    }
-
+    // Generate the dungeon map
     private void GenerateMap()
     {
+        // Create the starting room reference
         RoomReference startingRoom = new RoomReference();
 
-        startingRoom.isStarting = true;
+        startingRoom.roomType = RoomReference.roomTypes.spawn;
+
+        // Set the position of the starting room at the center of the map
         startingRoom.posInArray = new Vector2(mapBoundaries / 2, mapBoundaries / 2);
 
         roomsToGenerate[mapBoundaries / 2, mapBoundaries / 2] = startingRoom;
+
+        // Enqueue the starting room for further processing
         roomsQueue.Enqueue(startingRoom);
         roomHolder.Add(startingRoom);
 
-
+        // Continue generating rooms using BFS
         while (roomCount < maxRoomCount && roomsQueue.Count > 0)
         {
-
             RoomReference currentRoom = roomsQueue.Dequeue();
 
             Vector2[] newDirections = { };
-
             Vector2 roomPos = currentRoom.posInArray;
 
             newDirections = currentRoom.getNeihbourRooms();
-
-            
 
             foreach (Vector2 dir in newDirections)
             {
                 RoomReference generatedRoom = new RoomReference();
 
+                // Set the position of the generated room
                 generatedRoom.posInArray = dir + roomPos;
 
                 int coordX = (int)generatedRoom.posInArray.x;
                 int coordY = (int)generatedRoom.posInArray.y;
 
+                // Calculate the direction from the current room to the generated room
                 generatedRoom.parentDir = roomPos - generatedRoom.posInArray;
 
                 if (roomsToGenerate[coordX, coordY] == null && ValidateCoordinates(coordX, coordY, 0, mapBoundaries))
                 {
-
+                    // Mark the sides between the current room and the generated room as connected
                     generatedRoom.sideMarker[-dir] = true;
-
-
                     currentRoom.sideMarker[dir] = true;
 
                     roomsToGenerate[coordX, coordY] = generatedRoom;
@@ -166,52 +166,56 @@ public class DungeonGenerator : MonoBehaviour
                     roomCount++;
                 }
             }
-
             currentRoom.isGenerated = true;
         }
 
-        roomHolder[roomHolder.Count - 3].isKeyRoom = true;
-        roomHolder.Last().isExit = true;
+        roomHolder[roomHolder.Count - keyRoomFromLast].roomType = RoomReference.roomTypes.key;
+        roomHolder.Last().roomType = RoomReference.roomTypes.exit;
     }
 
-    private void testRooms()
+    // Instantiate and position the actual room prefabs in the dungeon
+    private void InstantiateRooms()
     {
         spawnOffset = (mapBoundaries / 2);
 
         foreach (var item in roomHolder)
         {
-
             int coordX = (int)item.posInArray.x - spawnOffset;
             int coordY = (int)item.posInArray.y - spawnOffset;
 
             Vector3 actualPos = new Vector3(coordX * roomMapSize, coordY * roomMapSize, 3);
 
-            
             var activeSides = item.sideMarker.Values.ToArray();
-
 
             GameObject r = Instantiate(roomPrefab, actualPos, Quaternion.identity);
             r.transform.parent = gameObject.transform;
 
-            r.GetComponent<DungeonRoomManager>().SetActiveEntrances(activeSides);
+            // Set the active entrances of the room based on activeSides
+            DungeonRoomManager currentRoomManager = r.GetComponent<DungeonRoomManager>();
+            currentRoomManager.SetActiveEntrances(activeSides);
 
-            if (item.isExit)
+            // Set room type to room manager
+            switch (item.roomType)
             {
-                r.GetComponent<DungeonRoomManager>().isExitRoom = true;
-            }
-
-            if (item.isStarting)
-            {
-                r.GetComponent<DungeonRoomManager>().isSpawnRoom = true;
-            }
-
-            if (item.isKeyRoom)
-            {
-                r.GetComponent<DungeonRoomManager>().isKeyRoom = true;
+                case RoomReference.roomTypes.normal:
+                    currentRoomManager.roomType = DungeonRoomManager.roomTypes.normal;
+                    break;
+                case RoomReference.roomTypes.exit:
+                    currentRoomManager.roomType = DungeonRoomManager.roomTypes.exit;
+                    currentRoomManager.isExitRoom = true;
+                    break;
+                case RoomReference.roomTypes.key:
+                    currentRoomManager.roomType = DungeonRoomManager.roomTypes.key;
+                    break;
+                case RoomReference.roomTypes.spawn:
+                    currentRoomManager.roomType = DungeonRoomManager.roomTypes.spawn;
+                    currentRoomManager.isSpawnRoom = true;
+                    break;
             }
         }
     }
 
+    // Check if the given coordinates (x, y) are within the valid range defined by minCoord and maxCoord
     private bool ValidateCoordinates(int x, int y, int minCoord, int maxCoord)
     {
         if (x >= minCoord && x <= maxCoord)
@@ -221,7 +225,6 @@ public class DungeonGenerator : MonoBehaviour
                 return true;
             }
         }
-
         return false;
     }
 }

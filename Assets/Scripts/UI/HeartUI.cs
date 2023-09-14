@@ -22,11 +22,7 @@ public class HeartUI : MonoBehaviour
         imageRef = GetComponent<Image>();
     }
 
-    void Update()
-    {
-        
-    }
-
+    // Match heart sprite according to value
     public void SetState(heartStates state)
     {
         switch (state)
