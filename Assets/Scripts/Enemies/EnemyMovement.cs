@@ -53,6 +53,11 @@ public class EnemyMovement : MonoBehaviour
         spriteRenderer.flipX = !(agent.desiredVelocity.x > 0);
     }
 
+    protected void CheckForSpriteFlipIdle()
+    {
+        spriteRenderer.flipX = !(playerTarget.transform.position.x > transform.position.x);
+    }
+
     public void Die()
     {
         HandleDeath();

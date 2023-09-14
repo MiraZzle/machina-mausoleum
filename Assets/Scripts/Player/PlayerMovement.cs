@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private PlayerSFXManager SFXManager;
+
+
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer sprite;
@@ -27,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        SFXManager = GetComponent<PlayerSFXManager>();
         currentSpeed = speed;
         PlayerStateTracker.playerDied += PlayOnDeath;
     }
@@ -74,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
     private void Dash()
     {
         PlayerStateTracker.playerVulnerable = false;
+        SFXManager.PlayRollSFX();
         animator.SetBool("dashing", true);
 
         currentSpeed = dashSpeed;
@@ -133,6 +138,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayOnDeath()
     {
+        SFXManager.PlayGameOver();
         animator.SetTrigger("Died");
         animator.updateMode = AnimatorUpdateMode.UnscaledTime;
     }

@@ -6,21 +6,13 @@ using UnityEngine.SceneManagement;
 public static class LevelManager
 {
     public static int currentLevel = 1;
-    private static int bossLevel = 5;
 
     public delegate void LevelChanged();
     public static LevelChanged levelChanged;
 
     private static string menuName = "MainMenu";
-    private static string bossLevelName = "BossLevel";
     private static string normalLevelName = "GunRange";
-
-
-
-    static void Update()
-    {
-        
-    }
+    private static string optionsMenuName = "OptionsMenu";
 
     public static void LoadLevel()
     {
@@ -48,9 +40,15 @@ public static class LevelManager
         SceneManager.LoadScene(normalLevelName);
     }
 
+    public static void LoadOptionsMenu()
+    {
+        SceneManager.LoadScene(optionsMenuName);
+    }
+
     public static void LoadMenu()
     {
         SceneManager.LoadScene(menuName);
+        PlayerStateTracker.dead = false;
     }
 
     public static void ReloadGame()

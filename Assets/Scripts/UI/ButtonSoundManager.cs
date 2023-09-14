@@ -13,6 +13,9 @@ public class ButtonSoundManager : MonoBehaviour
 
     public void PlayOnHover()
     {
-        audioSource.Play();
+        if (OptionManager.SFXEnabled)
+        {
+            audioSource.Play();
+        }
     }
 }

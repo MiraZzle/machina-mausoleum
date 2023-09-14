@@ -20,6 +20,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2062709013036903492, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 2738613282494700180}
     - target: {fileID: 2247021808415601589, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
       propertyPath: weaponPickup
       value: 
@@ -34,7 +38,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2913893921490958995, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
       propertyPath: maxAmo
-      value: 48
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 2913893921490958995, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
       propertyPath: firePos
@@ -50,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2913893921490958995, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
       propertyPath: shootRadius
-      value: 0.4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2913893921490958995, guid: e6502cdbdf2ac3349850b49938c34f9b, type: 3}
       propertyPath: shootingClip

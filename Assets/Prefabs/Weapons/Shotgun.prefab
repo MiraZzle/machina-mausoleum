@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3064494189846347435}
   - component: {fileID: 2217077477884722986}
   - component: {fileID: -1291925701468920666}
+  - component: {fileID: 5422219000733570503}
   m_Layer: 7
   m_Name: Shotgun
   m_TagString: Untagged
@@ -118,24 +119,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01597a6b5191b7c45ba32f6a1dcb82ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  accuracyEnemyMultiplier: 1.6
   accuracyDeg: 5
   shotsPerFire: 1
-  audioSource: {fileID: 0}
+  soundManager: {fileID: 0}
   firePos: {fileID: 7689034452909022751}
   projectilePrefab: {fileID: 6876085147549116530, guid: 9a19492912fe62741bc78022d81f9317, type: 3}
   automatic: 0
   canShoot: 0
   reloadTime: 0
-  cooldown: 3
-  projectileSpeed: 16
-  damage: 4
+  cooldown: 1.2
+  projectileSpeed: 10
+  damage: 6
   fireRate: 0
   shootingClip: {fileID: 8300000, guid: 053c84a5b662d2140a17740e58873e20, type: 3}
-  shootRadius: 1.6
+  shootRadius: 2.6
   ownedByPlayer: 1
   damageByPlayer: 4
-  damageByEnemy: 2
-  maxAmo: 12
+  damageByEnemy: 1
+  maxAmo: 48
   currentAmo: 0
 --- !u!114 &2217077477884722986
 MonoBehaviour:
@@ -246,6 +248,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5422219000733570503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373240785242598086}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15dce52c9142ea41a4e3682b211f812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 0}
+  audioSource: {fileID: -1291925701468920666}
+  themePlayer: 0
+  effectPlayer: 1
 --- !u!1 &2858100438732346508
 GameObject:
   m_ObjectHideFlags: 0

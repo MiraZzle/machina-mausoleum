@@ -103,7 +103,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2019961851
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 532ce989561632e45866aebb9d24df2d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -130,6 +130,7 @@ GameObject:
   - component: {fileID: 279365697942162729}
   - component: {fileID: 1838600371379290289}
   - component: {fileID: -2180046749886964225}
+  - component: {fileID: 7270115803275501637}
   m_Layer: 7
   m_Name: Toaster
   m_TagString: Untagged
@@ -192,7 +193,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -2019961851
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -234,23 +235,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01597a6b5191b7c45ba32f6a1dcb82ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  accuracyEnemyMultiplier: 1.6
   accuracyDeg: 13
   shotsPerFire: 2
-  audioSource: {fileID: 0}
+  soundManager: {fileID: 0}
   firePos: {fileID: 4887308008208362909}
   projectilePrefab: {fileID: 7075452396642639481, guid: a9e80623f158a4c4fb9d6c388bb08e75, type: 3}
   automatic: 0
   canShoot: 0
   reloadTime: 0
-  cooldown: 3
+  cooldown: 2.8
   projectileSpeed: 10
   damage: 8
   fireRate: 0
-  shootingClip: {fileID: 8300000, guid: 6dced437971e2ea4aab6d072f473d8fb, type: 3}
-  shootRadius: 0.5
+  shootingClip: {fileID: 8300000, guid: e8c1ad8620516ac4296be23b1cf3d220, type: 3}
+  shootRadius: 3
   ownedByPlayer: 1
   damageByPlayer: 7
-  damageByEnemy: 3
+  damageByEnemy: 2
   maxAmo: 50
   currentAmo: 0
 --- !u!114 &1838600371379290289
@@ -362,3 +364,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &7270115803275501637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3191293061927606596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15dce52c9142ea41a4e3682b211f812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 0}
+  audioSource: {fileID: -2180046749886964225}
+  themePlayer: 0
+  effectPlayer: 1

@@ -7,10 +7,11 @@ using UnityEngine.UIElements;
 
 public class GunShooting : MonoBehaviour
 {
-    [SerializeField] private int accuracyDeg;
+    [SerializeField] private float accuracyEnemyMultiplier = 1.6f;
+    [SerializeField] private float accuracyDeg;
     [SerializeField] private int shotsPerFire = 1;
 
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private SoundManager soundManager;
     [SerializeField] private Transform firePos;
     [SerializeField] private GameObject projectilePrefab;
 
@@ -36,7 +37,7 @@ public class GunShooting : MonoBehaviour
 
     private void Awake()
     {
-        audioSource = GetComponent<AudioSource>();
+        soundManager = GetComponent<SoundManager>();
         currentAmo = maxAmo;
     }
 
@@ -48,6 +49,7 @@ public class GunShooting : MonoBehaviour
         }
         else
         {
+            accuracyDeg *= accuracyEnemyMultiplier;
             damage = damageByEnemy;
         }
     }
@@ -101,9 +103,12 @@ public class GunShooting : MonoBehaviour
 
     private void BaseShoot(Projectile.Initiators initiator, int projectileLayer)
     {
-        //audioSource.PlayOneShot(shootingClip);
+        if (ownedByPlayer)
+        {
+            PlaySound();
+        }
 
-        int bulletDeviation = UnityEngine.Random.Range(-accuracyDeg, accuracyDeg);
+        float bulletDeviation = UnityEngine.Random.Range(-accuracyDeg, accuracyDeg);
         Vector3 spread = new Vector3(0, 0, bulletDeviation);
 
         GameObject projectile = Instantiate(projectilePrefab, firePos.position, Quaternion.Euler(firePos.rotation.eulerAngles + spread));
@@ -122,6 +127,11 @@ public class GunShooting : MonoBehaviour
             SpriteRenderer projectileSprite = projectile.GetComponent<SpriteRenderer>();
             projectileSprite.flipY = true;
         }
+    }
+
+    private void PlaySound()
+    {
+        soundManager.PlayEffect(shootingClip);
     }
 
     public void EnemyShooting()

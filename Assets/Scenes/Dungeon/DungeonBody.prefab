@@ -3250,7 +3250,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemSpawnPoints: []
   shuffledSpawnPoints: []
-  maxSpawnPoints: 2
+  maxSpawnPoints: 3
   actualSpawnPoints: 0
 --- !u!1 &4909660865475537210
 GameObject:
@@ -3837,7 +3837,7 @@ MonoBehaviour:
   spawners: []
   shuffledSpawners: []
   minEnemies: 3
-  maxEnemies: 6
+  maxEnemies: 5
   spawnedEnemies: 0
   roomHandler: {fileID: 5258110070825770245}
   itemSpawner: {fileID: 4895059169602375731}

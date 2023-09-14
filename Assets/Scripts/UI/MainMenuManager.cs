@@ -24,7 +24,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void EnterSettings()
     {
-
+        StartCoroutine(TransitionToOptions());
     }
 
     public void ExitGame()
@@ -39,5 +39,14 @@ public class MainMenuManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(OptionManager.transitionTime);
         
         LevelManager.StartGame();
+    }
+
+    IEnumerator TransitionToOptions()
+    {
+        transitionManager.GetComponent<TransitionManager>().FadeIn();
+
+        yield return new WaitForSecondsRealtime(OptionManager.transitionTime);
+
+        LevelManager.LoadOptionsMenu();
     }
 }

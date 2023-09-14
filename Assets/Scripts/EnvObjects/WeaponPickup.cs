@@ -31,6 +31,7 @@ public class WeaponPickup : CratePickup
                 gunManager.GetComponent<PlayerWeaponManager>().SetCurrentAmo(currentAmo);
             }
 
+            PlaySoundEffect();
 
             Destroy(gameObject);
         }

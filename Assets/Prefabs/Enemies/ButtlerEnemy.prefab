@@ -46,14 +46,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   availableGuns:
+  - {fileID: 5880521448009942319, guid: 0185fea6b5fd74143ac30e1938e04f12, type: 3}
+  - {fileID: 5880521448009942319, guid: 0185fea6b5fd74143ac30e1938e04f12, type: 3}
+  - {fileID: 6452737787199462770, guid: c2dcdb59ef5f8cd4ca0fc386625ce10b, type: 3}
+  - {fileID: 6452737787199462770, guid: c2dcdb59ef5f8cd4ca0fc386625ce10b, type: 3}
   - {fileID: 6452737787199462770, guid: c2dcdb59ef5f8cd4ca0fc386625ce10b, type: 3}
   - {fileID: 373240785242598086, guid: 59c8dd0f8c9a6d84798536a28e566f31, type: 3}
+  - {fileID: 373240785242598086, guid: 59c8dd0f8c9a6d84798536a28e566f31, type: 3}
+  - {fileID: 301002570867677192, guid: 30ea3b8becffe5241b6d336f3a07c411, type: 3}
   currentGun: {fileID: 0}
   currentParent: {fileID: 7602424449758061466}
   detectionRadius: {fileID: 0}
   cooldown: 0
   playerDetected: 0
   reloading: 0
+  prepareTime: 1
 --- !u!58 &6616544164552320843
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -111,7 +118,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4689568546922068215, guid: 3f6390833f879be469bfde745fdba837, type: 3}
       propertyPath: m_Speed
-      value: 2
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: 4689568546922068215, guid: 3f6390833f879be469bfde745fdba837, type: 3}
       propertyPath: m_AutoBraking
@@ -316,7 +323,7 @@ MonoBehaviour:
   itemSpawnPoint: {fileID: 4214574597417685488, guid: 2bdc74f25e8d07842864e2ed1dd29d15, type: 3}
   isRanged: 1
   axeSpawner: {fileID: 0}
-  maxHealth: 6
+  maxHealth: 3
   flasher: {fileID: 1430220438629912284}
   mover: {fileID: 1522809952498960455}
   shootingMover: {fileID: 1522809952498960455}

@@ -46,6 +46,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: KeyStructure
+    uniqueID: 4120820709
+    locked: 0
   - name: Sortable
     uniqueID: 2275005445
     locked: 0

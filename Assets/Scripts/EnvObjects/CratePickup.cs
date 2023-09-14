@@ -7,6 +7,7 @@ public class CratePickup : MonoBehaviour
     protected GameObject containedGun;
     protected GameObject containedPickup;
 
+    protected GameObject playerRef;
     [SerializeField] private SpriteRenderer spriteRen;
 
     [SerializeField] private Sprite unActiveS;
@@ -23,7 +24,6 @@ public class CratePickup : MonoBehaviour
 
     void Start()
     {
-        //spriteRen.sprite = unActiveS;
         listSize = gunList.Count;
 
         containedGun = GetContainedGun();
@@ -49,12 +49,17 @@ public class CratePickup : MonoBehaviour
         return gunDropList[randomIndex];
     }
 
+    protected void PlaySoundEffect()
+    {
+        playerRef = GameObject.FindWithTag("Player");
+        playerRef.GetComponent<PlayerSFXManager>().PlayPickupSFX();
+    }
+
     private void CheckForSpawnPickup()
     {
 
         if (playerColliding && Input.GetKeyDown(KeyCode.E))
         {
-            Debug.Log("yes");
             GameObject gunPickup = Instantiate(containedPickup, transform.position, Quaternion.identity);
 
             Destroy(gameObject);

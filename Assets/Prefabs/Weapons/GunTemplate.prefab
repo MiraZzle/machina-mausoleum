@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2913893921490958995}
   - component: {fileID: 2247021808415601589}
   - component: {fileID: -405433070687165512}
+  - component: {fileID: 2062709013036903492}
   m_Layer: 0
   m_Name: GunTemplate
   m_TagString: Untagged
@@ -118,9 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01597a6b5191b7c45ba32f6a1dcb82ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  accuracyEnemyMultiplier: 1.6
   accuracyDeg: 0
   shotsPerFire: 1
-  audioSource: {fileID: 0}
+  soundManager: {fileID: 0}
   firePos: {fileID: 0}
   projectilePrefab: {fileID: 0}
   automatic: 0
@@ -131,6 +133,10 @@ MonoBehaviour:
   damage: 0
   fireRate: 0
   shootingClip: {fileID: 0}
+  shootRadius: 0
+  ownedByPlayer: 1
+  damageByPlayer: 0
+  damageByEnemy: 0
   maxAmo: 0
   currentAmo: 0
 --- !u!114 &2247021808415601589
@@ -242,6 +248,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2062709013036903492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565618106051587838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f15dce52c9142ea41a4e3682b211f812, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 0}
+  audioSource: {fileID: 0}
+  themePlayer: 0
+  effectPlayer: 1
 --- !u!1 &2692445708005331124
 GameObject:
   m_ObjectHideFlags: 0

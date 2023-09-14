@@ -7,7 +7,7 @@ public class ItemSpawner : MonoBehaviour
 {
     [SerializeField] private List<GameObject> itemSpawnPoints;
     [SerializeField] private List<GameObject> shuffledSpawnPoints;
-    [SerializeField] private int maxSpawnPoints = 2;
+    [SerializeField] private int maxSpawnPoints = 3;
     [SerializeField] private int actualSpawnPoints;
     void Start()
     {

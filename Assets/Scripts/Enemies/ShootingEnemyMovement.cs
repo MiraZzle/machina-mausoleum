@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShootingEnemyMovement : EnemyMovement
 {
-    // Start is called before the first frame update
     void Start()
     {
         base.Start();
@@ -22,6 +21,7 @@ public class ShootingEnemyMovement : EnemyMovement
             case movementStates.moving:
                 if (!dead)
                 {
+                    agent.enabled = true;
                     agent.SetDestination(playerTarget.position);
                     CheckForSpriteFlip();
                     animator.SetBool("Moving", true);
@@ -30,6 +30,8 @@ public class ShootingEnemyMovement : EnemyMovement
             case movementStates.guarding:
                 break;
             case movementStates.attacking:
+                CheckForSpriteFlipIdle();
+                agent.enabled = false;
                 animator.SetBool("Moving", false);
                 break;
             case movementStates.dead:

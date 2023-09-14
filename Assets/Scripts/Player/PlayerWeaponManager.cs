@@ -13,7 +13,7 @@ public class PlayerWeaponManager : MonoBehaviour
     private int currentGunIndex = 0;
     private int numberOfGuns = 1;
 
-    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private PlayerSFXManager SFXManager;
     [SerializeField] private PlayerMovement player;
 
     [SerializeField] private GameObject weaponManager;
@@ -32,12 +32,10 @@ public class PlayerWeaponManager : MonoBehaviour
 
     public gunPair[] gunPairs;
 
-    [SerializeField] private AudioClip shootingClip;
-
     void Start()
     {
+        SFXManager = player.GetComponent<PlayerSFXManager>();
         weaponManager = gameObject;
-        audioSource = GetComponent<AudioSource>();
         if (LevelManager.currentLevel == 1)
         {
             AddFromGunReferences("Pistol");
@@ -69,7 +67,7 @@ public class PlayerWeaponManager : MonoBehaviour
         {
             if (gunList.Count > 1)
             {
-                audioSource.Play();
+                SFXManager.PlayGunChangeSGX();
             }
             SwitchWeapon(1);
         }
@@ -78,7 +76,7 @@ public class PlayerWeaponManager : MonoBehaviour
         {
             if (gunList.Count > 1)
             {
-                audioSource.Play();
+                SFXManager.PlayGunChangeSGX();
             }
             SwitchWeapon(-1);
         }

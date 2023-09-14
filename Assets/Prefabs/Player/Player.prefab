@@ -16,6 +16,9 @@ GameObject:
   - component: {fileID: 7470516708630186218}
   - component: {fileID: 6962087050309176113}
   - component: {fileID: 510306212746470415}
+  - component: {fileID: 3789710401484230946}
+  - component: {fileID: 2754400044797496606}
+  - component: {fileID: 1353067832828779166}
   m_Layer: 14
   m_Name: Player
   m_TagString: Player
@@ -151,6 +154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4a36877304ab7e4bb4b4f1dcaecc5fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SFXManager: {fileID: 1353067832828779166}
   rb: {fileID: 7990284231824626821}
   animator: {fileID: 3227747750116197331}
   sprite: {fileID: 1678146703155863283}
@@ -258,85 +262,33 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1678146703155863283}
   flashDuration: 0.125
   belongsToPlayer: 1
---- !u!1 &8890322537679682755
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3586914232341337227}
-  - component: {fileID: 2463516527449554704}
-  - component: {fileID: 762928746992317781}
-  m_Layer: 0
-  m_Name: WeaponManager
-  m_TagString: WeaponManager
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3586914232341337227
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8890322537679682755}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.32, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7342151734779444470}
-  m_Father: {fileID: 4301985421832452762}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2463516527449554704
+--- !u!114 &3789710401484230946
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8890322537679682755}
+  m_GameObject: {fileID: 3863075878834073787}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ff43643d7d9e8343b6f7675852b2fd5, type: 3}
+  m_Script: {fileID: 11500000, guid: f15dce52c9142ea41a4e3682b211f812, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
-  player: {fileID: 6550911053516972784}
-  weaponManager: {fileID: 8890322537679682755}
-  currentGun: {fileID: 0}
-  gunList: []
-  maxGunCount: 3
-  gunPairs:
-  - gunName: Automatica
-    gunRef: {fileID: 7273209203792596813, guid: 469b49025f72d1842ac4eed1362e5085, type: 3}
-  - gunName: DoubleBarrel
-    gunRef: {fileID: 3524950230529047171, guid: b8fdbbb1991bdd34285229833aa9cd82, type: 3}
-  - gunName: Library
-    gunRef: {fileID: 5880521448009942319, guid: 0185fea6b5fd74143ac30e1938e04f12, type: 3}
-  - gunName: Pistol
-    gunRef: {fileID: 6452737787199462770, guid: c2dcdb59ef5f8cd4ca0fc386625ce10b, type: 3}
-  - gunName: RifleGun
-    gunRef: {fileID: 301002570867677192, guid: 30ea3b8becffe5241b6d336f3a07c411, type: 3}
-  - gunName: Shotgun
-    gunRef: {fileID: 373240785242598086, guid: 59c8dd0f8c9a6d84798536a28e566f31, type: 3}
-  - gunName: Toaster
-    gunRef: {fileID: 3191293061927606596, guid: 7b6b72aeb219a8c4e961c3e16666b373, type: 3}
-  shootingClip: {fileID: 8300000, guid: 1bd205611612b6e42bca7f84462640ca, type: 3}
---- !u!82 &762928746992317781
+  audioClip: {fileID: 0}
+  audioSource: {fileID: 2754400044797496606}
+  themePlayer: 0
+  effectPlayer: 1
+--- !u!82 &2754400044797496606
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8890322537679682755}
+  m_GameObject: {fileID: 3863075878834073787}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 1bd205611612b6e42bca7f84462640ca, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -422,6 +374,89 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1353067832828779166
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3863075878834073787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67ebd0e42b3a8a64daa24afa7c3a3932, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupClip: {fileID: 8300000, guid: 2c150771033cd044ba471a4c3a23c04c, type: 3}
+  rollClip: {fileID: 8300000, guid: bcbc989d2e8dfb54f84a904f002c4f15, type: 3}
+  gunChangeClip: {fileID: 8300000, guid: 1bd205611612b6e42bca7f84462640ca, type: 3}
+  gameOver: {fileID: 8300000, guid: 14d2f89dba8d0154fa6fac1cdd027496, type: 3}
+  soundManager: {fileID: 3789710401484230946}
+--- !u!1 &8890322537679682755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3586914232341337227}
+  - component: {fileID: 2463516527449554704}
+  m_Layer: 0
+  m_Name: WeaponManager
+  m_TagString: WeaponManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3586914232341337227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8890322537679682755}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.32, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7342151734779444470}
+  m_Father: {fileID: 4301985421832452762}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2463516527449554704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8890322537679682755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ff43643d7d9e8343b6f7675852b2fd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SFXManager: {fileID: 0}
+  player: {fileID: 6550911053516972784}
+  weaponManager: {fileID: 8890322537679682755}
+  currentGun: {fileID: 0}
+  gunList: []
+  maxGunCount: 3
+  gunPairs:
+  - gunName: Automatica
+    gunRef: {fileID: 7273209203792596813, guid: 469b49025f72d1842ac4eed1362e5085, type: 3}
+  - gunName: DoubleBarrel
+    gunRef: {fileID: 3524950230529047171, guid: b8fdbbb1991bdd34285229833aa9cd82, type: 3}
+  - gunName: Library
+    gunRef: {fileID: 5880521448009942319, guid: 0185fea6b5fd74143ac30e1938e04f12, type: 3}
+  - gunName: Pistol
+    gunRef: {fileID: 6452737787199462770, guid: c2dcdb59ef5f8cd4ca0fc386625ce10b, type: 3}
+  - gunName: RifleGun
+    gunRef: {fileID: 301002570867677192, guid: 30ea3b8becffe5241b6d336f3a07c411, type: 3}
+  - gunName: Shotgun
+    gunRef: {fileID: 373240785242598086, guid: 59c8dd0f8c9a6d84798536a28e566f31, type: 3}
+  - gunName: Toaster
+    gunRef: {fileID: 3191293061927606596, guid: 7b6b72aeb219a8c4e961c3e16666b373, type: 3}
 --- !u!1001 &8612242479032142387
 PrefabInstance:
   m_ObjectHideFlags: 0

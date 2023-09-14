@@ -225,7 +225,7 @@ MonoBehaviour:
   itemSpawnPoint: {fileID: 4214574597417685488, guid: 2bdc74f25e8d07842864e2ed1dd29d15, type: 3}
   isRanged: 0
   axeSpawner: {fileID: 52995891541166236}
-  maxHealth: 4
+  maxHealth: 7
   flasher: {fileID: 3609124615540585279}
   mover: {fileID: 6693866639741664121}
   shootingMover: {fileID: 0}

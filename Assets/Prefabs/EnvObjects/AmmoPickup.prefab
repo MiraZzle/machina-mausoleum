@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87814c53383c3a349a30b5b0595c5fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minAmmo: 10
-  maxAmmo: 60
+  soundSpawner: {fileID: 0}
+  minAmmo: 25
+  maxAmmo: 100
   weaponManager: {fileID: 0}

@@ -15,7 +15,8 @@ public class EnemyWeaponManager : MonoBehaviour
     [SerializeField] private CircleCollider2D detectionRadius;
     [SerializeField] private float cooldown;
     [SerializeField] private bool playerDetected = false;
-    [SerializeField] private bool reloading = false;
+    [SerializeField] private bool reloading = true;
+    [SerializeField] private float prepareTime = 1f;
 
     private GunShooting shootingScript;
     void Start()
@@ -31,6 +32,8 @@ public class EnemyWeaponManager : MonoBehaviour
         shootingScript = currentGun.GetComponent<GunShooting>();
         cooldown = shootingScript.GetCooldown();
         SetRadius();
+
+        StartCoroutine(ChargeOnStart());
     }
 
     void Update()
@@ -47,6 +50,15 @@ public class EnemyWeaponManager : MonoBehaviour
     {
         float radiusPassed = currentGun.GetComponent<GunShooting>().GetRadius();
         detectionRadius.radius = radiusPassed;
+    }
+
+    IEnumerator ChargeOnStart()
+    {
+        reloading = true;
+
+        yield return new WaitForSeconds(prepareTime);
+
+        reloading = false;
     }
 
     private void SpawnGun()
@@ -97,7 +109,7 @@ public class EnemyWeaponManager : MonoBehaviour
 
     private void CheckForShooting()
     {
-        if (!reloading && playerDetected)
+        if (!reloading && playerDetected && !GameStateManager.gamePaused)
         {
             shootingScript.EnemyShooting();
             StartCoroutine(StartCooldown());

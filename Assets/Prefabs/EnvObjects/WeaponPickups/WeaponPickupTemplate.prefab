@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20d6527dc08b2e34498667b481238c08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundSpawner: {fileID: 0}
   spriteRen: {fileID: 0}
   unActiveS: {fileID: 0}
   ActiveS: {fileID: 0}
@@ -106,8 +107,7 @@ MonoBehaviour:
   gunDropList: []
   playerColliding: 0
   gunReference: {fileID: 0}
-  throwDistance: 0
-  throwSpeed: 0
+  currentAmo: 0
 --- !u!61 &3842772911364598381
 BoxCollider2D:
   m_ObjectHideFlags: 0

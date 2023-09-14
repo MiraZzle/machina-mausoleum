@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class KeyPickup : MonoBehaviour
 {
+    protected GameObject playerRef;
     private bool playerColliding = false;
     void Start()
     {
@@ -24,8 +25,15 @@ public class KeyPickup : MonoBehaviour
         if (playerColliding && Input.GetKeyDown(KeyCode.E))
         {
             ActOnPickup();
+            PlaySoundEffect();
             Destroy(gameObject);
         }
+    }
+
+    protected void PlaySoundEffect()
+    {
+        playerRef = GameObject.FindWithTag("Player");
+        playerRef.GetComponent<PlayerSFXManager>().PlayPickupSFX();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

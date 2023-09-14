@@ -46,7 +46,7 @@ PrefabInstance:
       objectReference: {fileID: 3524950230529047171, guid: b8fdbbb1991bdd34285229833aa9cd82, type: 3}
     - target: {fileID: 731295118459213906, guid: cc6baa92752580b43b434bab515e21b2, type: 3}
       propertyPath: gunDropList.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 731295118459213906, guid: cc6baa92752580b43b434bab515e21b2, type: 3}
       propertyPath: gunDropList.Array.data[0]
