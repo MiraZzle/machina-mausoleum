@@ -34,6 +34,4 @@ public class PlayerSFXManager : MonoBehaviour
     {
         soundManager.PlayEffect(gameOver);
     }
-
-
 }
