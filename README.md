@@ -13,14 +13,15 @@ Before diving into this project, ensure that you meet the following prerequisite
 ## Installation
 1. Clone this repository or download it as a ZIP file
       ```bash
-   git clone https://github.com/MiraZzle/crawler
+   git clone https://github.com/MiraZzle/machina-mausoleum
    ```
 2. Launch Unity and select "Open Project." Navigate to the directory where you've either cloned or extracted the game, and Unity will automatically load the project.
 
 ## How to play
-1. Download the game from the link provided below.
+1. Download the game as described in Installation.
 2. Unzip the dowloaded file.
-3. Launch **Machina Mausoleum.exe**.
+3. Navigate to a folder called **Machina Mausoleum - build**.
+4. Launch **Machina Mausoleum.exe**.
 
 ## Controls
 #### Player movement
