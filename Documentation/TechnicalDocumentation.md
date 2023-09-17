@@ -122,19 +122,22 @@ Following scripts control procedural dungeon generation, dungeon room management
 7. #### ```KeyUIComp```
    The script displays whether the player has acquired the elevator key.
 
-8. #### ```MainMenuManager```
+8. #### ```LayerAnnouncer```
+   The script displays number of current level at the start of level.
+
+10. #### ```MainMenuManager```
    The script manages interactions and transitions within the main menu.
 
-9.  #### ```PauseMenuManager```
+11.  #### ```PauseMenuManager```
     The script allows the player to pause and resume the game, exit to the main menu, and exit the game entirely.
 
-10. #### ```ScoreCounterUI```
+11. #### ```ScoreCounterUI```
     The script displays players score as the amount of killed enemies.
 
-11. #### ```CameraController```
+12. #### ```CameraController```
     The script handles camera movement to smoothly follow the player.
 
-12. #### ```TransitionManager```
+13. #### ```TransitionManager```
     The script is responsible for displaying transition between scenes and levels.
 
 ### 7. Utils
