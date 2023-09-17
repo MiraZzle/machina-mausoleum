@@ -3,20 +3,18 @@
 The user documentation is designed to provide clear and comprehensive guidance on how to navigate and interact with the Machina Mausoleum game.
 
 ## Controls
-
-#### Player movement
-- Move Up: [W] key (Hold down)
-- Move Left: [A] key (Hold down)
-- Move Down: [S] key (Hold down)
-- Move Right: [D] key (Hold down)
-- Roll: [Space] key (Press) - Grants Invulnerability
-
-#### Further actions
-- Shoot: [Left mouse button] (Press)
-- Switch Weapon: [Mouse wheel] (Up / Down)
-- Equip Weapon Pickup: [E] key (Press)
-- Pickup Item: [E] key (Press)
-- Pause / Unpause Game: [ESC] key (Press)
+| Key                  | Action             |
+| ---------------------| -------------------|
+| <kbd>W</kbd>         | Move Up            |
+| <kbd>A</kbd>         | Move Left          |
+| <kbd>S</kbd>         | Move Down          |
+| <kbd>D</kbd>         | Move right         |
+| <kbd>LButton</kbd>   | Shoot              |
+| <kbd>WheelDown</kbd> | Switch Weapon      |
+| <kbd>WheelUp</kbd>   | Switch Weapon      |
+| <kbd>E</kbd>         | Equip Weapon Pickup|
+| <kbd>E</kbd>         | Pickup Item        |
+| <kbd>ESC</kbd>       | Pause / Unpause    |
 
 ## Enemies
 Enemies are split up into groups based on their attack type:

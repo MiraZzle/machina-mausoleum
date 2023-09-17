@@ -24,19 +24,27 @@ Before diving into this project, ensure that you meet the following prerequisite
 4. Launch **Machina Mausoleum.exe**.
 
 ## Controls
-#### Player movement
-- Move Up: [W] key (Hold down)
-- Move Left: [A] key (Hold down)
-- Move Down: [S] key (Hold down)
-- Move Right: [D] key (Hold down)
-- Roll: [Space] key (Press)
 
-#### Further actions
-- Shoot: [Left mouse button] (Press)
-- Switch Weapon: [Mouse wheel] (Up / Down)
-- Equip Weapon Pickup: [E] key (Press)
-- Pickup Item: [E] key (Press)
-- Pause / Unpause Game: [ESC] key (Press)
+| Key                  | Action             |
+| ---------------------| -------------------|
+| <kbd>W</kbd>         | Move Up            |
+| <kbd>A</kbd>         | Move Left          |
+| <kbd>S</kbd>         | Move Down          |
+| <kbd>D</kbd>         | Move right         |
+| <kbd>LButton</kbd>   | Shoot              |
+| <kbd>WheelDown</kbd> | Switch Weapon      |
+| <kbd>WheelUp</kbd>   | Switch Weapon      |
+| <kbd>E</kbd>         | Equip Weapon Pickup|
+| <kbd>E</kbd>         | Pickup Item        |
+| <kbd>ESC</kbd>       | Pause / Unpause    |
+
+## Unfinished features
+
+The original project scope included implementing a boss fight mechanic that would occur every few levels. However, due to time constraints, the initial version was released without the planned boss fight. In the future, I intend to incorporate several boss fights in a style similar to "Enter the Gungeon," along with a story mode.
+
+- [ ] Boss Fight
+- [ ] Story Mode
+
 
 ## Additional Documentation
 1. **User documentation:** [User Docs](./Documentation/UserDocumentation.md)
