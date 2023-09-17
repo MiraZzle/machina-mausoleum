@@ -1617,9 +1617,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c9a13df9843a64a8a41a5b865bf66d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomHandler: {fileID: 5258110070825770245}
   objectPositions:
   - {fileID: 3807312169428726463}
-  roomHandler: {fileID: 5258110070825770245}
   artificialWallPos: []
   elevatorPos: {fileID: 5839293905801894634}
   keySpawnPos: {fileID: 7373677394147369984}
@@ -3418,11 +3418,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd948feb3b0ac9d4b9d5e62db98fe3ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isExitRoom: 0
-  isSpawnRoom: 0
-  isKeyRoom: 0
-  roomEntered: 0
-  roomCleaned: 0
   enemySpawner: {fileID: 6360028103643744357}
   objectSpawner: {fileID: 3448553472723236379}
   doors:
@@ -3442,6 +3437,10 @@ MonoBehaviour:
   - {fileID: 7867772060978803791}
   activeSides: 00000000
   navmesh: {fileID: 0}
+  isExitRoom: 0
+  isSpawnRoom: 0
+  roomEntered: 0
+  roomCleaned: 0
   roomType: 0
 --- !u!61 &1534543138414815405
 BoxCollider2D:
@@ -3497,7 +3496,7 @@ SortingGroup:
   m_GameObject: {fileID: 5258110070825770245}
   m_Enabled: 1
   m_SortingLayerID: -2019961851
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: -1
   m_SortAtRoot: 0
 --- !u!1 &5770625845791800374
@@ -3833,14 +3832,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b000c436bbf9b924eb1d1d47af0edee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomHandler: {fileID: 5258110070825770245}
+  itemSpawner: {fileID: 4895059169602375731}
   itemSpawners: []
   spawners: []
   shuffledSpawners: []
   minEnemies: 3
   maxEnemies: 5
   spawnedEnemies: 0
-  roomHandler: {fileID: 5258110070825770245}
-  itemSpawner: {fileID: 4895059169602375731}
 --- !u!1 &6803874596602549001
 GameObject:
   m_ObjectHideFlags: 0
@@ -6542,6 +6541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5b1f10011dca914da7ac9c6c91ba02e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bakingTime: 0.8
   Surface2D: {fileID: 3392506552602499701}
 --- !u!1 &9107385664046270294
 GameObject:
@@ -6945,7 +6945,7 @@ PrefabInstance:
     - target: {fileID: 7324759877840892136, guid: 2c61168104e675e459b9da6f0246dea5, type: 3}
       propertyPath: roomObjects.Array.data[2]
       value: 
-      objectReference: {fileID: 2939487232867923814, guid: 05d3ebb9aba38b24a9c37aae3b15329a, type: 3}
+      objectReference: {fileID: 5946460612736060200, guid: 262511e53409bfe4aacd02b808ff5c3d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
