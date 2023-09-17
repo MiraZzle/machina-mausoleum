@@ -129,7 +129,7 @@ Following scripts control procedural dungeon generation, dungeon room management
    The script manages interactions and transitions within the main menu.
 
 11.  #### ```PauseMenuManager```
-    The script allows the player to pause and resume the game, exit to the main menu, and exit the game entirely.
+   The script allows the player to pause and resume the game, exit to the main menu, and exit the game entirely.
 
 11. #### ```ScoreCounterUI```
     The script displays players score as the amount of killed enemies.
