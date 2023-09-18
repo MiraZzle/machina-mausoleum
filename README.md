@@ -31,6 +31,7 @@ Before diving into this project, ensure that you meet the following prerequisite
 | <kbd>A</kbd>         | Move Left          |
 | <kbd>S</kbd>         | Move Down          |
 | <kbd>D</kbd>         | Move right         |
+| <kbd>Space</kbd>     | Roll               |
 | <kbd>LButton</kbd>   | Shoot              |
 | <kbd>WheelDown</kbd> | Switch Weapon      |
 | <kbd>WheelUp</kbd>   | Switch Weapon      |

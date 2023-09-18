@@ -1,6 +1,6 @@
 # User Documentation
 
-The user documentation is designed to provide clear and comprehensive guidance on how to navigate and interact with the Machina Mausoleum game.
+The user documentation is designed to provide clear and comprehensive guidance on how to navigate and interact with the game.
 
 ## Controls
 | Key                  | Action             |
@@ -9,6 +9,7 @@ The user documentation is designed to provide clear and comprehensive guidance o
 | <kbd>A</kbd>         | Move Left          |
 | <kbd>S</kbd>         | Move Down          |
 | <kbd>D</kbd>         | Move right         |
+| <kbd>Space</kbd>     | Roll               |
 | <kbd>LButton</kbd>   | Shoot              |
 | <kbd>WheelDown</kbd> | Switch Weapon      |
 | <kbd>WheelUp</kbd>   | Switch Weapon      |
@@ -65,8 +66,9 @@ Player may hold 3 weapons at most.
 2. **Automatica**
 3. **Shotgun**
 4. **Double barrel shotgun**
-5. **Library**
-6. **Toaster**
+5. **Rifle**
+6. **Library**
+7. **Toaster**
 
 ## Dungeon Objects
 1. **Elevator** - Takes the player to the next dungeon layer, requiring a key to function. There are both spawn and closed elevators.

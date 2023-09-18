@@ -1,6 +1,6 @@
 # Technical Documentation
 
-Welcome to the Machina Mausoleum Technical Documentation. This resource is your guide to the game's architecture, code structure, and development tools. 
+This resource serves as a guide to the game's architecture, code structure, and development tools. 
 
 ## Code Overview
 
@@ -9,7 +9,7 @@ The Code is divided into following sections:
 Following scripts control procedural dungeon generation, dungeon room management and spawning items in rooms.
 
 1. #### ```DungeonGenerator```
-   The "DungeonGenerator" script procedurally generates interconnected dungeon rooms in the Machina Mausoleum game using a BFS algorithm. 
+   The "DungeonGenerator" script procedurally generates interconnected dungeon rooms in the game using a BFS algorithm. The BFS based algorithm provides interesting and balanced room generation. Unlike DFS based approach, which may generate long horizontal or vertical strips of interconnected rooms.
 
     - ```GenerateMap()```: Initiates room generation using BFS, considering room types and boundaries.
 
@@ -43,6 +43,7 @@ Following scripts control procedural dungeon generation, dungeon room management
 
 
 ### 2. Enemies
+Following scripts manage enemy movement, attacks, managin health and pathfinding.
 1. #### ```AxeSpawner```
    The script spawns axes evenly distributed in a circular pattern and calculates the rotational differences between them.
 
@@ -62,6 +63,7 @@ Following scripts control procedural dungeon generation, dungeon room management
    The class is an extension of the ```EnemyMovement```class, specifically designed for enemies with ranged attacks.
 
 ### 3. EnvObjects
+Following scripts manage item pickups and other item interactions.
 1. #### ```AmmoPickup```
    The script represents an ammo item that the player can pick up to receive additional ammunition for their weapons.
 
@@ -86,6 +88,7 @@ Following scripts control procedural dungeon generation, dungeon room management
     The class is an extension of the ```CratePickup```. Handles behavior of weapon pickups in the game, allowing players to equip new weapons and associated ammo.
 
 ### 4. Player
+These scripts are responsible for player movement, health management and weapon management.
 1. #### ```PlayerMovement```
    The script controls the movement of the player character in the game, including basic movement, dashing, animation, and flip direction based on mouse position.
 2. #### ```PlayerWeaponManager```
@@ -98,10 +101,12 @@ Following scripts control procedural dungeon generation, dungeon room management
    - ```AddFromGunReferences(string nameToAdd)```: This method adds guns to the player's inventory based on predefined gun pairs by iterating through the available gun pairs and checking for a matching gun name.
 
 ### 5. Projectiles
+This category handles projectile behavior.
 1. #### ```Projectile```
    The script handles collision detection with other game objects and deals damage based on its initiator, which can be either the player or an enemy.
 
 ### 6. UI
+Following scripts are used for managing all UI components of the game - displaying player health and gun information, managing paused and death screen and taking care of menu and settings scene. 
 1. #### ```ButtonSoundManager```
    The script manages button sound effects in the game. 
 2. #### ```DeathMenuManager```
@@ -141,6 +146,7 @@ Following scripts control procedural dungeon generation, dungeon room management
     The script is responsible for displaying transition between scenes and levels.
 
 ### 7. Utils
+This section is dedicated to scripts helping save, load and manage universal data and shared prefab behaviors.
 1. #### ```DamageFlasher```
    The script is used to make the parent GameObject (Player or Enemy) "flash" briefly with a specified material when it takes damage. 
 
@@ -171,6 +177,7 @@ Following scripts control procedural dungeon generation, dungeon room management
    The script handles playing both background music (themes) and sound effects, with the ability to control their playback based on game settings and events.
 
 ### 8. Weapons
+This section is dedicated to managing gun equips and shooting.
 1. #### ```Gun```
    The script handles rotation towards a target position and flipping sprite based on the target's position relative to the gun.
 
@@ -185,6 +192,10 @@ The project uses open source GitHub repository [NavMeshPlus](https://github.com/
 
 ## Used Software
 In this project, [Unity](https://unity.com/) was used as the game engine of choice. All visual assets were crafted using [Aseprite](https://www.aseprite.org/).
+
+## Commit Guidelines
+This project follows [Conventional Commits](https://gist.github.com/qoomon/5dfcdf8eec66a051ecd85625518cfd13).
+
 
 ## Assets
 1. **Visual assets**
