@@ -1,7 +1,7 @@
 # Machina Mausoleum
 
 ## Scope
-Welcome to the Machina Mausoleum repository, dedicated to my semester-long project inspired by Enter The Gungeon's distinctive style and core concept. This game features procedurally generated dungeons, an array of weapons to choose from, and a bunch of enemies to defeat. The project was developed using the Unity Game Engine.
+Welcome to the Machina Mausoleum repository, dedicated to my semestral project inspired by Enter The Gungeon's distinctive style and core concept. This game features procedurally generated dungeons, an array of weapons to choose from, and a bunch of enemies to defeat. The project was developed using the Unity Game Engine.
 
 ## Prerequisites
 Before diving into this project, ensure that you meet the following prerequisites to guarantee a seamless experience:
