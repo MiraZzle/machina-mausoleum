@@ -1,4 +1,10 @@
-# Machina Mausoleum
+<p align="center">
+  <img src="DocumentationAssets/title.png" width="400">  
+</p>
+
+<p align="center">
+   <b>Machina Mausoleum </b> is a simple top down bullet hell <br>set in procedurally generated dungeons.
+</p>
 
 ## Scope
 Welcome to the Machina Mausoleum repository, dedicated to my semestral project inspired by Enter The Gungeon's distinctive style and core concept. This game features procedurally generated dungeons, an array of weapons to choose from, and a bunch of enemies to defeat. The project was developed using the Unity Game Engine.
